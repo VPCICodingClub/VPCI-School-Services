@@ -1,3 +1,5 @@
+// DON'T EDIT THIS FILE
+
 import './styles.css';
 import { createApp } from 'vue';
 import { createRouter, createWebHashHistory } from 'vue-router';
@@ -13,7 +15,8 @@ const app = createApp({
     template: '<router-view></router-view>' // This is where the component that corresponds to the current route will be displayed.
 });
 // In this case, the component of the '/' path (landing page path) is Layout, so it will be put in the place of this router-view.
-// The Layout component will have another router-view in it for other components.
+// The Layout component will be used for containing the general layout of the page, so it will include components that will
+// be on every page. It will also have another router-view which will change depending on the path.
 
 // All the components are in ./app/components, each has an index.js and <ComponentName>.html file.
 // You could combine these two files, but it's cleaner to separate the logic from the styling and layout.
