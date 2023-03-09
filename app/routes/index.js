@@ -1,4 +1,5 @@
 import Layout from '../components/Layout';
+import About from '../components/About';
 // The routes will be managed in this file
 // If there are too many, then the nested routes will be moved to other files within this folder.
 
@@ -9,9 +10,7 @@ const routes = [{
     children: [{
         name: 'About',
         path: '/about',
-        component: {
-            template: '<div>about</div>',
-        },
+        component: About,
     }] // Add more routes here.
 }];
 
