@@ -1,6 +1,6 @@
 // DON'T EDIT THIS FILE
 
-import './styles.css';
+import './styles';
 import { createApp } from 'vue';
 import { createRouter, createWebHashHistory } from 'vue-router';
 import routes from './routes'; // All routes will be in this folder to keep things tidy.

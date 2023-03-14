@@ -1,4 +1,4 @@
-import template from './Home.html';
+import template from './home.html';
 
 export default {
     template,

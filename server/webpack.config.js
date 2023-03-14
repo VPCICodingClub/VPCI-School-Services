@@ -36,7 +36,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './app/index.html'
     }),
-    new webpack.DefinePlugin({ // Vue wants these globals to be defined, otherwise there's aa warning.
+    new webpack.DefinePlugin({ // Vue wants these globals to be defined, otherwise there's a warning.
       __VUE_OPTIONS_API__: true,
       __VUE_PROD_DEVTOOLS__: false,
     }),
