@@ -1,0 +1,33 @@
+.card {
+    width: 180px;
+    height: 220px;
+    background: var(--gray);
+    border-radius: 15px;
+    padding: 15px;
+}
+
+.card:hover {
+    animation: gradient linear 1s infinite;
+}
+
+@keyframes gradient {
+    0% {
+        color: red;
+    }
+    25% {
+        color: yellow;
+    }
+    50% {
+        color: green;
+    }
+    75% {
+        color: blue;
+    }
+    100% {
+        color: red;
+    }
+}
+
+.card h3 {
+
+}
