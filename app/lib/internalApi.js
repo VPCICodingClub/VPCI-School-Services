@@ -21,7 +21,6 @@ const defaultOptions = {
 };
 
 async function APIRequest(url, data = null, options = {}) {
-    console.log('here');
     if (!options.method) {
         throw new Error('Please provide a method');
     }
@@ -53,8 +52,6 @@ async function APIRequest(url, data = null, options = {}) {
     }
 
     const response = await fetch(fullUrl, requestOptions);
-    console.log(fullUrl);
-    console.log(requestOptions);
     const json = await response.json();
 
     return {

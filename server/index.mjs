@@ -4,7 +4,7 @@ import { URL } from 'url';
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 
-import api from './api/index.mjs';
+import api from './api/index.mjs'; // this is importing the express.Router
 
 const app = express();
 const port = 3000;
@@ -25,8 +25,11 @@ app.use(express.static(new URL('../build', import.meta.url).pathname));
 // These files need to be compiled through the command line with `npm run build`, then you can start the server.
 // ==================== //
 
+// https://www.geeksforgeeks.org/express-js-app-use-function/
+// app.use() is used to mount middleware
+// https://expressjs.com/en/guide/using-middleware.html
 app.use(express.json()); // For parsing body as JSON because it comes as a string otherwise.
-app.use(api); // Use the api
+app.use(api); // Need to add the api here otherwise you can't use it.
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);

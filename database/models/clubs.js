@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  Clubs.init({
+  Clubs.init({ // You can add more attributes here, but also add them in migrations.
     name: DataTypes.TEXT,
     description: DataTypes.TEXT
   }, {
