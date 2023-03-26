@@ -1,0 +1,16 @@
+const path = require('path');
+
+module.exports = {
+  'config': path.resolve('config', 'database.json'),
+  'models-path': path.resolve('database/models'),
+  'seeders-path': path.resolve('database/seeders'),
+  'migrations-path': path.resolve('database/migrations'),
+};
+
+// This file is for the sequelize-cli so it can generate the config and
+// the model using the specified path.
+
+// The sequelize-cli automatically creates the models for the database.
+// https://sequelize.org/docs/v6/other-topics/migrations/
+
+// The config is set up using `npx sequelize init`

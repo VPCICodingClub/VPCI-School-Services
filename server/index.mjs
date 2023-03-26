@@ -4,6 +4,8 @@ import { URL } from 'url';
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 
+import api from './api/index.mjs';
+
 const app = express();
 const port = 3000;
 
@@ -24,6 +26,7 @@ app.use(express.static(new URL('../build', import.meta.url).pathname));
 // ==================== //
 
 app.use(express.json()); // For parsing body as JSON because it comes as a string otherwise.
+app.use(api); // Use the api
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);

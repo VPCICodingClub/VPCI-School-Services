@@ -3,5 +3,5 @@ import './clubCard.css'
 
 export default {
     template,
-    props: ['name'], // Props are gotten from the parent component.
+    props: ['name', 'description'], // Props are gotten from the parent component.
 };

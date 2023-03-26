@@ -1,2 +1,2 @@
 import './global.css'
-import './header.css'
+// Gonna remove later.

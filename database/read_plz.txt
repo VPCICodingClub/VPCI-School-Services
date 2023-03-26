@@ -1,0 +1,17 @@
+run `npx sequelize init`
+this will use .sequelizerc to make the folders in this folder and a new config folder
+change the dialect in the config file to 'postgres'
+this path will be in .gitignore, so orgnaize it how you want
+
+then run `createuser <username>`
+then run `createdb <database-name> -O <username>`
+
+the models are already made, run `npx sequelize db:migrate` which will translate the migrations into tables in the database
+when editing the models, also edit the migrations, make sure they're consistent.
+
+For dummy data, add stuff in seeders/ with `npx sequelize seed:generate --name <table-name>` and then run `npx sequelize db:seed:all`
+
+if you mess something up just purge the database :)
+
+For the command-line interface for postgres,
+/h for SQL commands and /? for psql commands

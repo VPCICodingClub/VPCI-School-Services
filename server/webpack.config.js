@@ -8,6 +8,7 @@ module.exports = {
   resolve: {
     alias: {
       vue: 'vue/dist/vue.esm-bundler.js',
+      Lib: path.resolve(__dirname, '../app/lib'), // The internal api is put in this folder so that it can be accessed anywhere with the alias.
     }
   },
   output: {

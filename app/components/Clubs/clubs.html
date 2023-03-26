@@ -3,6 +3,7 @@
 <div v-if="clubs" class="clubs-container">
     <club-card
         v-for="club in clubs"
-        :name="club.name">
+        :name="club.name"
+        :description="club.description">
     </club-card>
 </div>
