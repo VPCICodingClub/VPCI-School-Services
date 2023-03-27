@@ -1,0 +1,8 @@
+.club-details-container {
+    display: flex;
+    justify-content: center;
+}
+
+.club-details-container > div {
+    max-width: 1000px;
+}

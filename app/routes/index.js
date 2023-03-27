@@ -2,6 +2,7 @@ import Layout from '../components/Layout';
 import About from '../components/About';
 import Home from '../components/Home';
 import Clubs from '../components/Clubs';
+import ClubDetails from '../components/ClubDetails';
 // The routes will be managed in this file
 // If there are too many, then the nested routes will be moved to other files within this folder.
 
@@ -17,13 +18,18 @@ const routes = [{
         },
         {
             name: 'about',
-            path: '/about',
+            path: 'about',
             component: About,
         },
         {
             name: 'clubs',
-            path: '/clubs',
+            path: 'clubs',
             component: Clubs,
+        },
+        {
+            name: 'clubDetails',
+            path: 'clubs/:id',
+            component: ClubDetails,
         },
     ] // Add more routes here.
 }];

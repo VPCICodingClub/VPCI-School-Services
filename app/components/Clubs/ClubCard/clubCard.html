@@ -1,4 +1,4 @@
-<div class="card">
+<router-link class="card" :to="{ name: 'clubDetails', params: { id: name }}">
     <h3>{{name}}</h3>
     <div>{{description}}</div>
-</div>
+</router-link>
