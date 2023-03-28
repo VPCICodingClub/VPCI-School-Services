@@ -6,7 +6,7 @@ this path will be in .gitignore, so orgnaize it how you want
 then run `createuser <username>`
 then run `createdb <database-name> -O <username>`
 
-the models are already made, run `npx sequelize db:migrate` which will translate the migrations into tables in the database
+the models are already made, run `npx sequelize db:migrate` which will translate the migrations into tables in the database. `npx sequelize db:migrate:undo` to undo.
 when editing the models, also edit the migrations, make sure they're consistent.
 
 For dummy data, add stuff in seeders/ with `npx sequelize seed:generate --name <table-name>` and then run `npx sequelize db:seed:all`

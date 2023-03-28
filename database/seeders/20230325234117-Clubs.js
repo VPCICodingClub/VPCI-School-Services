@@ -16,18 +16,21 @@ module.exports = {
       {
         name: 'Club 1',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis non efficitur quam. Pellentesque nec dolor in risus dapibus elementum.',
+        slug: 'club-1',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
         name: 'Club 2',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nec ex quis sapien fringilla pulvinar sed eu orci. ',
+        slug: 'club-2',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
         name: 'Club 3',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse posuere hendrerit sollicitudin. Donec vitae lacus scelerisque, rutrum urna ut, consequat ante.',
+        slug: 'club-3',
         createdAt: new Date(),
         updatedAt: new Date(),
       },

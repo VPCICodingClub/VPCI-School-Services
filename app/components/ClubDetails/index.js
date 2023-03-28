@@ -9,11 +9,16 @@ export default {
             club: null,
         }
     },
-    async created() {
-        const id = this.$route.params.id;
-        const { data } = await internalApi.get('clubs', { query: id });
-        this.club = data[0];
-        console.log(data);
-        console.log(this.club);
+    beforeRouteUpdate(to) {
+        this.getClub(to.params.id);
     },
+    created() {
+        this.getClub(this.$route.params.id);
+    },
+    methods: {
+        async getClub(id) {
+            const { data } = await internalApi.get('clubs', { query: id });
+            this.club = data[0];
+        }
+    }
 };

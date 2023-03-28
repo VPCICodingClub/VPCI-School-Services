@@ -10,7 +10,7 @@ export default async (req, res) => {
   // If there is no specific search query (empty string),
   // then there will he no 'where' specification and all clubs will be selected.
   if (query) {
-    options.where = { name: query };
+    options.where = { slug: query };
   }
 
   const clubs = await Clubs.findAll(options);
