@@ -16,6 +16,7 @@ module.exports = {
       {
         name: 'Club 1',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis non efficitur quam. Pellentesque nec dolor in risus dapibus elementum.',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/4/43/Stoned_Fox.jpg',
         slug: 'club-1',
         createdAt: new Date(),
         updatedAt: new Date(),
@@ -23,6 +24,7 @@ module.exports = {
       {
         name: 'Club 2',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nec ex quis sapien fringilla pulvinar sed eu orci. ',
+        logo: 'https://popcat.click/twitter-card.jpg',
         slug: 'club-2',
         createdAt: new Date(),
         updatedAt: new Date(),
@@ -30,6 +32,7 @@ module.exports = {
       {
         name: 'Club 3',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse posuere hendrerit sollicitudin. Donec vitae lacus scelerisque, rutrum urna ut, consequat ante.',
+        logo: 'https://i.pinimg.com/236x/c4/dc/02/c4dc027b8f8df79fbed1446b1f7bf103.jpg',
         slug: 'club-3',
         createdAt: new Date(),
         updatedAt: new Date(),

@@ -14,9 +14,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Clubs.init({ // You can add more attributes here, but also add them in migrations.
-    name: DataTypes.TEXT,
+    name: { type: DataTypes.TEXT, allowNull: false },
     description: DataTypes.TEXT,
-    slug: DataTypes.TEXT,
+    logo: DataTypes.TEXT,
+    slug: { type: DataTypes.TEXT, allowNull: false },
   }, {
     sequelize,
     modelName: 'Clubs',

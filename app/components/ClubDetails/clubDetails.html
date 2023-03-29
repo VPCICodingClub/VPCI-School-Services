@@ -1,6 +1,9 @@
 <div class="club-details-container" v-if="club">
     <div>
-        <h2>{{club.name}}</h2>
+        <div class="club-details-header">
+            <img :src=club.logo class="club-logo">
+            <h2>{{club.name}}</h2>
+        </div>
         <p>{{club.description}}</p>
     </div>
 </div>

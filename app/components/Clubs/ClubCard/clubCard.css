@@ -1,11 +1,16 @@
 .card {
     width: 180px;
     min-height: 220px;
-    background: var(--gray);
-    border-radius: 15px;
+    background: #f0f0f0;
+    border-radius: 5px;
     padding: 15px;
     text-decoration: none;
     color: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 3px 12px #ccc;
 }
 
 .card:hover {
@@ -30,6 +35,16 @@
     }
 }
 
-.card h3 {
+.card img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 100px;
+/*    border: 3px solid var(--white);*/
+}
 
+.card h3 {
+    font-weight: 300;
+    font-size: 25px;
+    margin: 25px 0 0 0;
 }

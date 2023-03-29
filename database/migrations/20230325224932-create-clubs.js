@@ -10,12 +10,17 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name: {
+        allowNull: false,
         type: Sequelize.TEXT
       },
       description: {
         type: Sequelize.TEXT
       },
+      logo: {
+        type: Sequelize.TEXT
+      },
       slug: {
+        allowNull: false,
         type: Sequelize.TEXT
       },
       createdAt: {
