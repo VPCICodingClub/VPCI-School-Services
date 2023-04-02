@@ -18,6 +18,10 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.TEXT,
     logo: DataTypes.TEXT,
     slug: { type: DataTypes.TEXT, allowNull: false },
+    supervisors: DataTypes.ARRAY(DataTypes.TEXT),
+    leaders: DataTypes.TEXT,
+    schedule: DataTypes.TEXT,
+    social: DataTypes.ARRAY(DataTypes.TEXT),
   }, {
     sequelize,
     modelName: 'Clubs',

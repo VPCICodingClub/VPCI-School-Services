@@ -23,6 +23,18 @@ module.exports = {
         allowNull: false,
         type: Sequelize.TEXT
       },
+      supervisors: {
+        type: Sequelize.ARRAY(Sequelize.TEXT)
+      },
+      leaders: {
+        type: Sequelize.ARRAY(Sequelize.TEXT)
+      },
+      schedule: {
+        type: Sequelize.TEXT
+      },
+      social: {
+        type: Sequelize.ARRAY(Sequelize.TEXT)
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

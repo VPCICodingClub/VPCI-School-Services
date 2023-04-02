@@ -4,6 +4,11 @@
             <img :src=club.logo class="club-logo">
             <h2>{{club.name}}</h2>
         </div>
-        <p>{{club.description}}</p>
+        <p> {{club.description}} <hr> 
+            Supervisors: <li v-for = "supervisor in club.supervisors"> {{supervisor}} </li> <hr>
+            Leaders: <li v-for = "leader in club.leaders"> {{leader}} </li> <hr>
+            Schedule: {{club.schedule}} <hr>
+            Social Media: <li v-for = "social in club.social"> {{social}} </li> <hr>
+        </p>
     </div>
 </div>
