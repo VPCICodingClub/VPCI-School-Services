@@ -6,7 +6,7 @@
 
 ## Setup and Run
 
-- `git clone <link>` to clone the repo-get the link from the green `Code` button above.
+- `git clone <link>` to clone the repo get the link from the green `Code` button above.
 
 Assuming you also have Node.js installed,
 - `npm install` to download all the dependencies.

@@ -19,7 +19,7 @@ module.exports = {
         logo: 'https://upload.wikimedia.org/wikipedia/commons/4/43/Stoned_Fox.jpg',
         slug: 'club-1',
         supervisors: ['Mr. Lorem', 'Mr. Ipsum'],
-        leaders: ['Lorem, Ipsum'],
+        leaders: ['Lorem', 'Ipsum'],
         schedule: '12:00PM Mondays',
         social: ['vpcidiscord', 'vpciig'],
         createdAt: new Date(),
