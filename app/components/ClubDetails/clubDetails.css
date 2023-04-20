@@ -1,29 +1,109 @@
 .club-details-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
-.club-details-container > div {
-    max-width: 800px;
+.club-basic-info-container {
+    background-color: white;
+    border-radius: 40px 40px 0 0;
+    padding: 40px;
+    width: 1000px;
+    height: 100%;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, .1);
+}
+
+.club-basic-info-container > div {
+    margin: 5px;
 }
 
 .club-details-header {
     display: flex;
     align-items: center;
+    margin: 18em 0 5em 0;
+    justify-content: center;
 }
 
 .club-details-header > h2 {
-    border-bottom: 2px solid black;
+/*    border-bottom: 2px solid black;*/
     width: auto;
-    margin-left: 20px;
-    flex: 1;
-    font-size: 30px;
+    margin: 0;
+    margin-left: 0.3em;
+    font-size: 8em;
 }
 
 .club-logo {
 /*    border: 6px solid var(--white);*/
-    width: 100px;
-    height: 100px;
+    width: 10em;
+    height: 10em;
     object-fit: cover;
     border-radius: 100px;
+}
+
+.schedule, .join {
+    border: 1px solid lightgray;
+    border-radius: 6px;
+    padding: 5px;
+/*    margin-left: 5px;*/
+}
+
+.join {
+    margin-top: 5px;
+    width: 100%;
+    display: block;
+}
+
+.info-list {
+    display: flex;
+    border: 1px solid lightgray;
+    border-radius: 6px;
+    padding: 5px;
+    align-items: center;
+}
+
+.info-list div {
+    margin: 0 5px;
+}
+
+.info-list ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.info-list li {
+    display: block;
+    text-align: center;
+    margin: 5px;
+/*    border: 1px solid gray;*/
+    background-color: #eee;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.leaders {
+    flex-grow: 1;
+    border: 1px solid lightgray;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+
+.leaders ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.leaders li {
+    display: block;
+    text-align: center;
+    padding: 5px;
+    background-color: #eee;
+    border-radius: 5px;
+    margin: 5px;
+    margin-left: 15px;
 }
