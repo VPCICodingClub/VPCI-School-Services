@@ -2,13 +2,13 @@ header {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: var(--gray);
+    background-color: var(--primary);
     z-index: 1; /*To put header above relative/absolute elements*/
 }
 
 .logo {
-    font-size: 40px;
-    padding: 20px;
+    font-size: 4rem;
+    padding: 2rem;
     font-weight: 100;
 }
 
@@ -40,3 +40,26 @@ nav a {
 nav a:hover {
     background: rgba(0, 0, 0, 0.2);
 }
+
+@media screen and (max-width: 768px) {
+    .logo {
+        padding: 2rem 0 0;
+        text-align: center;
+    }
+
+    nav ul {
+        margin: 0.5rem 0 1rem;
+    }
+
+    nav {
+        flex-direction: column;
+    }
+
+}
+
+/*@media screen and (max-width: 405px) {
+    .logo {
+        text-align: center;
+    }
+
+}*/

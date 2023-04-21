@@ -1,5 +1,4 @@
-<!-- <div style="background-color: white; height:100vh; width: 100%; position: absolute;"></div> -->
-<div style="background-color: var(--gray); height:32em; width:100%; position: fixed;"></div>
+<div style="background-color: var(--primary); height:32em; width:100%; position: fixed;"></div>
 <div style="position: absolute; width: 100%; left: auto;">
     <div v-if="club" class="club-details-container">
         <div style="display: flex; flex-direction: column; height:100vh;">
@@ -36,18 +35,3 @@
         </div>
     </div>
 </div>
-
-<!-- <div class="club-details-container" v-if="club">
-    <div>
-        <div class="club-details-header">
-            <img :src=club.logo class="club-logo">
-            <h2>{{club.name}}</h2>
-        </div>
-        <p> {{club.description}} <hr> 
-            Supervisors: <li v-for = "supervisor in club.supervisors"> {{supervisor}} </li> <hr>
-            Leaders: <li v-for = "leader in club.leaders"> {{leader}} </li> <hr>
-            Schedule: {{club.schedule}} <hr>
-            Social Media: <li v-for = "social in club.social"> {{social}} </li> <hr>
-        </p>
-    </div>
-</div> -->
