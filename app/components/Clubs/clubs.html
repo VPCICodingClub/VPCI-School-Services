@@ -1,4 +1,9 @@
-<h2>Clubs</h2>
+<div class="clubs-header">
+    <div>
+        <div class="h2-1">VPCI'S</div>
+        <h2><span class="number-of-clubs">{{clubs.length}}</span>Clubs</h2>
+    </div>
+</div>
 
 <div v-if="clubs" class="clubs-container">
     <club-card v-for="club in clubs" :club="club">
