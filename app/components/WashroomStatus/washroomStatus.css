@@ -1,0 +1,19 @@
+.open-closed-button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.open-closed-button-container button {
+    font-size: 1.1em;
+    margin: 0.5em;
+    border: none;
+    border-radius: 0.6em;
+    background-color: white;
+    box-shadow: 2px 2px 15px var(--lightGray);
+    width: 6em;
+    height: 3em;
+    color: black;
+}

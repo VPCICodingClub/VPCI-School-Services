@@ -1,0 +1,6 @@
+<div class="map-container">
+    <div style="position: relative;">
+        <img class="map" :src="firstFloor">
+        <Washroom v-for="washroom in washrooms" :washroom="washroom"></Washroom>
+    </div>
+</div>
