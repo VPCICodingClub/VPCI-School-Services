@@ -11,8 +11,7 @@ module.exports = {
      *   name: 'John Doe',
      *   isBetaMember: false
      * }], {});
-    */
-  
+    */  
   await queryInterface.bulkInsert('Events', [
       {
         title: 'Cooking',
@@ -24,7 +23,9 @@ module.exports = {
     ], {});
 },
   async down (queryInterface, Sequelize) {
+
   
      // await queryInterface.bulkDelete('Events', null, {});
+
   }
 };
