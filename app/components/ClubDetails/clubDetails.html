@@ -1,14 +1,61 @@
-<div class="club-details-container" v-if="club">
-    <div>
-        <div class="club-details-header">
-            <img :src=club.logo class="club-logo">
-            <h2>{{club.name}}</h2>
+<div style="background-color: var(--primary); height:32em; width:100%; position: fixed;"></div>
+<div style="position: absolute; width: 100%; left: auto;">
+    <div v-if="club" class="club-details-container">
+        <div style="display: flex; flex-direction: column; align-items: center; height:100vh;">
+            <div class="club-details-header" style="flex-shrink: 0;">
+                <img :src=club.logo class="club-logo">
+                <h2>{{club.name}}</h2>
+            </div>
+            <div class="club-basic-info-container" id="desktop">
+                <div class="upper-container">
+                    <div class="vertical-list">
+                        Executives
+                        <ul>
+                            <li v-for="leader in club.leaders">{{leader}}</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div>{{club.description}}</div>
+                        <div class="schedule">Schedule - {{club.schedule}}</div>
+                        <div class="horizontal-list">
+                            <div>Supervised by</div>
+                            <ul>
+                                <li v-for="supervisor in club.supervisors">{{supervisor}}</li>
+                            </ul>
+                        </div>
+                        <button class="join">Join</button>
+                    </div>
+                </div>
+                <div class="horizontal-list">
+                    <div>Social Media(s)</div>
+                    <ul>
+                        <li v-for="social in club.social">{{social}}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="club-basic-info-container" id="mobile">
+                <div>{{club.description}}</div>
+                <!-- <div class="schedule">Schedule - {{club.schedule}}</div> -->
+                <div class="vertical-list">
+                    Executives
+                    <ul>
+                        <li v-for="leader in club.leaders">{{leader}}</li>
+                    </ul>
+                </div>
+                <div class="vertical-list">
+                    <div>Supervised by</div>
+                    <ul>
+                        <li v-for="supervisor in club.supervisors">{{supervisor}}</li>
+                    </ul>
+                </div>
+                <div class="vertical-list">
+                    <div>Social Media(s)</div>
+                    <ul>
+                        <li v-for="social in club.social">{{social}}</li>
+                    </ul>
+                </div>
+                <button class="join">Join</button>
+            </div>
         </div>
-        <p> {{club.description}} <hr> 
-            Supervisors: <li v-for = "supervisor in club.supervisors"> {{supervisor}} </li> <hr>
-            Leaders: <li v-for = "leader in club.leaders"> {{leader}} </li> <hr>
-            Schedule: {{club.schedule}} <hr>
-            Social Media: <li v-for = "social in club.social"> {{social}} </li> <hr>
-        </p>
     </div>
 </div>

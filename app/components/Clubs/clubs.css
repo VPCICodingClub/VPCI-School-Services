@@ -2,5 +2,50 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 2rem;
+/*    background-color: var(--lightG);*/
+}
+
+.clubs-header {
+    margin: 15rem 0 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.number-of-clubs {
+  letter-spacing: -1.8rem;
+  color: var(--primary);
+}
+
+.h2-1 {
+    position: relative;
+    bottom: -3rem;
+    line-height: 0;
+    font-size: 2rem;
+}
+
+.clubs-header h2 {
+    font-size: 16rem;
+    margin: 0;
+    padding: 0;
+    text-indent: 1rem;
+    letter-spacing: -1.6rem;
+    font-weight: 200;
+}
+
+@media screen and (max-width: 500px) {
+    .clubs-header {
+        margin: 20rem 0 0 0;
+    }
+
+    .h2-1 {
+        bottom: -2.2rem;
+        font-size: 1.8rem;
+    }
+
+    .clubs-header h2 {
+        font-size: 12rem;
+        letter-spacing: -1.2rem;
+    }
 }
