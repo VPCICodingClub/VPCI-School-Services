@@ -1,9 +1,15 @@
 import template from './clubDetails.html';
 import internalApi from 'Lib/internalApi';
+import Post from './Post';
+import Event from './Event';
 import './clubDetails.css';
 
 export default {
     template,
+    components: {
+        Post,
+        Event,
+    },
     data() {
         return {
             club: null,

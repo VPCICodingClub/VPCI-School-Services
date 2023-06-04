@@ -19,6 +19,7 @@
 }
 
 .h2-1 {
+    font-family: 'Montserrat', sans-serif;
     position: relative;
     bottom: -3rem;
     line-height: 0;
@@ -26,6 +27,7 @@
 }
 
 .clubs-header h2 {
+    font-family: 'Montserrat', sans-serif;
     font-size: 16rem;
     margin: 0;
     padding: 0;

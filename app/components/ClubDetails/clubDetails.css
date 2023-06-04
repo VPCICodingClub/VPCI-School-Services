@@ -10,14 +10,24 @@
     border-radius: 4rem 4rem 0 0;
     padding: 4rem;
     width: 75%;
-    max-width: 85rem;
+    max-width: 120rem;
     height: 100%;
     box-shadow: 2px 2px 12px rgba(0, 0, 0, .1);
-    margin: 0 2rem;
+/*    margin: 0 2rem;*/
 }
 
 .club-basic-info-container > div {
     margin: 5px;
+}
+
+.club-basic-info-container h3 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    margin-top: 3rem;
+    background-color: var(--lightGrey);
+/*    background: linear-gradient(0.25turn, var(--lightGrey), white);*/
+    border-radius: 1rem;
+    padding: 0.8rem 1.8rem;
 }
 
 .club-details-header {
@@ -29,6 +39,9 @@
 
 .club-details-header > h2 {
 /*    border-bottom: 2px solid black;*/
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    letter-spacing: -0.2rem;
     width: auto;
     margin: 0;
     margin-left: 0.3em;
@@ -152,6 +165,7 @@
     padding: 0;
     margin: 0;
 }
+
 .vertical-list li {
     display: block;
     text-align: center;
@@ -160,4 +174,38 @@
     border-radius: 5px;
     margin: 5px;
     margin-left: 15px;
+}
+
+/* Posts and Events */
+
+.post-event-container {
+    max-height: 50rem;
+    overflow: auto;
+/*    border-radius: 5rem;*/
+/*    border: 1px solid var(--lightGrey);*/
+/*    background-color: var(--lightGrey);*/
+/*    box-shadow: 2px 2px 12px rgba(0, 0, 0, .1);*/
+
+}
+
+.post-event {
+/*    border: 1px solid var(--lightGrey);*/
+    border-radius: 2rem;
+    padding: 2rem;
+    margin: 2rem;
+    background-color: white;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, .1);
+}
+
+.post-event > h4 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.post-event > p {
+    margin-bottom: 0;
+}
+
+.post-event-date {
+    font-size: 1.2rem;
 }

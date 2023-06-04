@@ -1,5 +1,5 @@
 import template from './home.html';
-import Map from '../Map';
+import Map from '../MapFrame';
 
 export default {
     template,
