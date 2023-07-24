@@ -1,0 +1,15 @@
+/*.map-container img {
+    width: 800px;
+    height: 450px;
+}
+*/
+.map-container {
+    margin-top: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*.map-container > canvas {
+    border: black solid 1px;
+}*/

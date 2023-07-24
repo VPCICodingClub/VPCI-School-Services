@@ -1,0 +1,27 @@
+.room {
+    fill: black;
+    stroke: none;
+}
+
+.room-info {
+    fill: red;
+    visibility: hidden;
+}
+
+.room:hover + .room-info {
+    fill: red;
+    visibility: visible;
+}
+
+/*.room:hover {
+    fill: white;
+    stroke: none;
+}
+*/
+.boys {
+    fill: lightblue;
+}
+
+.girls {
+    fill: pink;
+}
