@@ -3,7 +3,7 @@ header {
     top: 0;
     width: 100%;
     background-color: var(--primary);
-    z-index: 1; /*To put header above relative/absolute elements*/
+    z-index: 2; /*To put header above relative/absolute elements*/
 }
 
 .logo {

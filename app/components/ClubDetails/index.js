@@ -13,6 +13,7 @@ export default {
     data() {
         return {
             club: null,
+            posts: null,
         }
     },
     beforeRouteUpdate(to) {
@@ -23,8 +24,10 @@ export default {
     },
     methods: {
         async getClub(id) {
-            const { data } = await internalApi.get('clubs', { query: id });
-            this.club = data[0];
+            const { data: clubs } = await internalApi.get('clubs', { query: id });
+            this.club = clubs[0];
+            const { data: posts } = await internalApi.get('clubs', { query: this.club.id });
+            this.posts = posts[0];
         }
     }
 };

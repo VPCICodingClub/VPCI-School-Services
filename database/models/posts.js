@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Posts.init({
     title: {type: DataTypes.TEXT, allowNull: false},
-    description: DataTypes.TEXT
+    description: DataTypes.TEXT,
   }, {
     sequelize,
     modelName: 'Posts',

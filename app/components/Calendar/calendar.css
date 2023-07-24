@@ -1,0 +1,8 @@
+.app{
+    font-family: 'Montserrat', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    width: 100rem;
+    color: #2c3e50;
+    margin: 30px auto;
+}

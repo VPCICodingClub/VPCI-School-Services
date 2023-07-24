@@ -1,6 +1,7 @@
 import template from './home.html';
 /* import Map from '../Map'; */
-import Calendar from '../Calendar/Calendar.vue';
+import Calendar from '../Calendar';
+import './home.css'
 
 export default {
     template,
