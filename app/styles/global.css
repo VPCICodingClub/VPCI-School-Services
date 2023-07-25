@@ -37,3 +37,7 @@ html {
 h1 {
     margin: 0;
 }
+
+.right-align {
+    margin-left: auto !important;
+}
