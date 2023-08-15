@@ -1,3 +1,7 @@
+svg {
+    margin-top: 10rem;
+}
+
 .room {
     fill: black;
     stroke: none;
@@ -5,12 +9,6 @@
 
 .room-info {
     fill: red;
-    visibility: hidden;
-}
-
-.room:hover + .room-info {
-    fill: red;
-    visibility: visible;
 }
 
 /*.room:hover {

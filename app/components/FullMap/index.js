@@ -1,8 +1,8 @@
-import template from './mapFrame.html';
+import template from './fullMap.html';
 import internalApi from 'Lib/internalApi';
 import Map from './Map';
 import Washroom from './Washroom';
-import './mapFrame.css'
+import './fullMap.css'
 
 export default {
     template,

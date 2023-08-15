@@ -1,0 +1,11 @@
+<svg v-for="svg in svgs"
+     v-show="svg.visible"></svg>
+<div>
+    <div>
+        <!-- show(svgs_array_index) -->
+        <button @click="show(0)">1st Floor</button>
+        <button @click="show(1)">2nd Floor</button>
+        <button @click="show(2)">3rd Floor</button>
+    </div>
+    <router-link :to="{ name: 'map'}">View Full Map --></router-link>
+</div>
