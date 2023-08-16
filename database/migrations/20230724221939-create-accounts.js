@@ -13,7 +13,11 @@ module.exports = {
         allowNull: false,
         type: Sequelize.TEXT
       },
-      password: {
+      passwordHash: {
+        allowNull: false,
+        type: Sequelize.TEXT
+      },
+      salt: {
         allowNull: false,
         type: Sequelize.TEXT
       },
