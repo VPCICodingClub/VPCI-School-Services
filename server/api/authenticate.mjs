@@ -4,21 +4,12 @@ import crypto from 'crypto';
 const { Accounts } = db;
 
 export default async (req, res) => {
-  const { username, password } = req.body;
-  // console.log(username);
-  // console.log(password);
+  const { username, password } = req.body.account;
 
   const account = await Accounts.findOne({ where: { username } });
 
-  const salt = account.salt;
-  // console.log(salt);
-
-  const hash = crypto.scrypt(password, salt, 32); // idk if the callback is necessary..
-
-  // const hash = crypto.scrypt(password, salt, 32, (err, derivedKey) => {
-  //   if (err) throw err;
-  //   console.log("The derived key(1) is:", derivedKey.toString("base64"));
-  // });
+  const salt = account.salt; // Retrieve the salt from the database to to rehash the password.
+  const hash = crypto.scryptSync(password, salt, 32).toString('hex');
 
   if (hash === account.passwordHash) {
     console.log('authenticated');
@@ -26,7 +17,6 @@ export default async (req, res) => {
     console.log('wrong password');
   }
 
-  // console.log(hash.toString('base64'));
-
-  res.json(hash);
+  res.json(hash); // TODO: Change this.
 };
+// TODO: Add 2FA.

@@ -4,23 +4,23 @@ import crypto from 'crypto';
 const { Accounts } = db;
 
 export default async (req, res) => {
-  const { username, password } = req.body;
-  console.log(username);
-  console.log(password);
+  const { account } = req.body;
+  console.log(account.username);
+  console.log(account.password);
 
-  let salt = crypto.randomBytes(16).toString('hex');
+  const salt = crypto.randomBytes(16).toString('hex');
   console.log(salt);
 
-  const hash = crypto.scrypt(password, salt, 32, (err, derivedKey) => {
+  const hash = crypto.scryptSync(account.password, salt, 32).toString('hex');
+  console.log(hash);
 
-    if (err) throw err;
-
-    console.log("The derived key(1) is:", derivedKey.toString("base64"));
+  const newAccount = await Accounts.create({
+    username: account.username,
+    passwordHash: hash,
+    salt,
+    email: account.email,
+    isClubAccount: account.isClubAccount,
   });
 
-  console.log(hash.toString('base64'));
-
-  //Add hash, salt and username to database
-
-  res.json();
+  res.json(newAccount); // TODO: Change this.
 };

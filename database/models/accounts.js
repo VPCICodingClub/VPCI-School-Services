@@ -17,6 +17,8 @@ module.exports = (sequelize, DataTypes) => {
     username: { type: DataTypes.TEXT, allowNull: false },
     passwordHash: { type: DataTypes.TEXT, allowNull: false },
     salt: { type: DataTypes.TEXT, allowNull: false },
+    email: { type: DataTypes.TEXT, allowNull: false },
+    isClubAccount: { type: DataTypes.BOOLEAN, allowNull: false },
   }, {
     sequelize,
     modelName: 'Accounts',

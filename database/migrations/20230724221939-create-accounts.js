@@ -21,6 +21,14 @@ module.exports = {
         allowNull: false,
         type: Sequelize.TEXT
       },
+      email: {
+        allowNull: false,
+        type: Sequelize.TEXT
+      },
+      isClubAccount: {
+        allowNull: false,
+        type: Sequelize.BOOLEAN
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

@@ -3,7 +3,8 @@ import About from '../components/About';
 import Home from '../components/Home';
 import Clubs from '../components/Clubs';
 import ClubDetails from '../components/ClubDetails';
-import Login from '../components/Login';
+import SignIn from '../components/SignIn';
+import SignUp from '../components/SignUp';
 import WashroomStatus from '../components/WashroomStatus';
 // The routes will be managed in this file
 // If there are too many, then the nested routes will be moved to other files within this folder.
@@ -39,9 +40,14 @@ const routes = [{
             component: ClubDetails,
         },
         {
-            name: 'account',
-            path: 'account',
-            component: Login,
+            name: 'sign-in',
+            path: 'sign-in',
+            component: SignIn,
+        },
+        {
+            name: 'sign-up',
+            path: 'sign-up',
+            component: SignUp,
         },
     ] // Add more routes here.
 }];

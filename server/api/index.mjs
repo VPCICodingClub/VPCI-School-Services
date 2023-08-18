@@ -5,6 +5,7 @@ import getClubs from './getClubs.mjs';
 import getWashroomStatus from './getWashroomStatus.mjs';
 import updateWashroomStatus from './updateWashroomStatus.mjs';
 import authenticate from './authenticate.mjs';
+import signUp from './signUp.mjs';
 
 // https://expressjs.com/en/guide/routing.html (scroll down for express.Router)
 const router = express.Router();
@@ -18,5 +19,6 @@ router.get(apiPath + '/clubs', getClubs);
 router.get(apiPath + '/washrooms', getWashroomStatus);
 router.post(apiPath + '/washroom-status', updateWashroomStatus);
 router.post(apiPath + '/auth', authenticate);
+router.post(apiPath + '/signUp', signUp);
 
 export default router;
