@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Accounts.init({
-    username: { type: DataTypes.TEXT, allowNull: false },
+    username: { type: DataTypes.TEXT, allowNull: false, uniqe: true },
     passwordHash: { type: DataTypes.TEXT, allowNull: false },
     salt: { type: DataTypes.TEXT, allowNull: false },
     email: { type: DataTypes.TEXT, allowNull: false },

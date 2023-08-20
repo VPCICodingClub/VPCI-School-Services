@@ -13,15 +13,17 @@ function getUser() {
 
     const [header, payload] = token.split('.');
     const decodedUser = atob(payload);
-    // const userObj = JSON.parse(decodedUser);
+    const userObj = JSON.parse(decodedUser);
 
-    return decodedUser;
+    return userObj;
 }
 
 function isAuthed() {
-    const token = getToken();
+    const user = getUser();
+    const nowInSeconds = Math.round(Date.now()/1000);
+    const expired = nowInSeconds >= user.exp;
 
-    return token && token !== 'null';
+    return user && !expired;
 }
 
 function updateToken(newToken) {

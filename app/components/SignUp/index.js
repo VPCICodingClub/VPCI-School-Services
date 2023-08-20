@@ -1,12 +1,13 @@
 import template from './signUp.html';
 import internalApi from 'Lib/internalApi';
+import { updateToken } from 'Lib/auth';
 // Uses styles from Login.
 
 export default {
     template,
     data() {
         return {
-            username: null, // TODO: Prevent username duplicates.
+            username: null,
             password: null,
             passwordConfirmation: null,
             email: null, // TODO: regex to verify.
@@ -16,14 +17,16 @@ export default {
     methods: {
         async auth() {
             if (this.password === this.passwordConfirmation){
-                await internalApi.post('register', {
+                const { data: { token } } = await internalApi.post('register', {
                     username: this.username,
                     password: this.password,
                     email: this.email,
                     isClubAccount: this.isClubAccount,
                 });
+                updateToken(token);
+                this.$router.push({ name: 'account' });
             } else {
-                // TODO: give alert
+                alert('Passwords do not match!');
             }
         }
     }
