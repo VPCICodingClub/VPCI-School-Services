@@ -6,19 +6,22 @@ export default {
     template,
     data() {
         return {
-            account: {
-                username: null, // TODO: Prevent username duplicates.
-                password: null,
-                passwordConfirmation: null,
-                email: null, // TODO: regex to verify.
-                isClubAccount: false,
-            }
+            username: null, // TODO: Prevent username duplicates.
+            password: null,
+            passwordConfirmation: null,
+            email: null, // TODO: regex to verify.
+            isClubAccount: false,
         };
     },
     methods: {
         async auth() {
-            if (this.account.password === this.account.passwordConfirmation){
-                await internalApi.post('signUp', { account: this.account });
+            if (this.password === this.passwordConfirmation){
+                await internalApi.post('register', {
+                    username: this.username,
+                    password: this.password,
+                    email: this.email,
+                    isClubAccount: this.isClubAccount,
+                });
             } else {
                 // TODO: give alert
             }

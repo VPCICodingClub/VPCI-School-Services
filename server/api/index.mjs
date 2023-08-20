@@ -4,8 +4,8 @@ import express from 'express';
 import getClubs from './getClubs.mjs';
 import getWashroomStatus from './getWashroomStatus.mjs';
 import updateWashroomStatus from './updateWashroomStatus.mjs';
-import authenticate from './authenticate.mjs';
-import signUp from './signUp.mjs';
+import register from './authentication/register.mjs';
+import login from './authentication/login.mjs';
 
 // https://expressjs.com/en/guide/routing.html (scroll down for express.Router)
 const router = express.Router();
@@ -18,7 +18,7 @@ const apiPath = '/api/v1';
 router.get(apiPath + '/clubs', getClubs);
 router.get(apiPath + '/washrooms', getWashroomStatus);
 router.post(apiPath + '/washroom-status', updateWashroomStatus);
-router.post(apiPath + '/auth', authenticate);
-router.post(apiPath + '/signUp', signUp);
+router.post(apiPath + '/register', register);
+router.post(apiPath + '/login', login);
 
 export default router;

@@ -10,6 +10,7 @@ the models are already made, run `npx sequelize db:migrate` which will translate
 when editing the models, also edit the migrations, make sure they're consistent.
 
 For dummy data, add stuff in seeders/ with `npx sequelize seed:generate --name <table-name>` and then run `npx sequelize db:seed:all`
+`npx sequelize db:seed:undo:all` to undo all the seeding.
 
 if you mess something up just purge the database :)
 

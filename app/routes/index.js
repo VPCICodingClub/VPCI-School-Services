@@ -5,6 +5,7 @@ import Clubs from '../components/Clubs';
 import ClubDetails from '../components/ClubDetails';
 import SignIn from '../components/SignIn';
 import SignUp from '../components/SignUp';
+import Dashboard from '../components/Dashboard';
 import WashroomStatus from '../components/WashroomStatus';
 // The routes will be managed in this file
 // If there are too many, then the nested routes will be moved to other files within this folder.
@@ -48,6 +49,12 @@ const routes = [{
             name: 'sign-up',
             path: 'sign-up',
             component: SignUp,
+        },
+        {
+            name: 'account',
+            path: 'account',
+            component: Dashboard,
+            meta: { requiresAuth: true }
         },
     ] // Add more routes here.
 }];

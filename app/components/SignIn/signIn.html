@@ -1,17 +1,17 @@
 <div class="login-container">
     <h2>Login</h2>
-    <form>
+    <form @submit.prevent="auth">
         <div>
             <label>Username</label>
-            <input type="text" autocomplete="off" placeholder="username" v-model="account.username">
+            <input type="text" autocomplete="off" placeholder="username" v-model="username">
         </div>
         <div>
             <label>Password</label>
-            <input type="text" autocomplete="off" placeholder="password" v-model="account.password">
+            <input type="password" autocomplete="off" placeholder="password" v-model="password">
         </div>
 
         <div>
-            <button type="submit" class="fa-solid fa-arrow-right" @click="auth"></button>
+            <button type="submit" class="fa-solid fa-arrow-right"></button>
         </div>
     </form>
 </div>
