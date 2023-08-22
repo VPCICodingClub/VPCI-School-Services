@@ -9,6 +9,9 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      location: {
+        type: Sequelize.TEXT
+      },
       rating: {
         type: Sequelize.INTEGER
       },

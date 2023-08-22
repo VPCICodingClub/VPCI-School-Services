@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Washrooms.init({
+    location: DataTypes.TEXT,
     rating: DataTypes.INTEGER,
     observations: DataTypes.ARRAY(DataTypes.BOOLEAN), // true mean WR is open, false is closed.
   }, {

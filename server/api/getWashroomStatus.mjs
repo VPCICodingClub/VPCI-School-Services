@@ -9,7 +9,7 @@ export default async (req, res) => {
   if (query) { // Gonna be used for the floor.
     options.where = { slug: query };
   }
-
+  
   const washrooms = await Washrooms.findAll(options);
 
   res.json(washrooms);

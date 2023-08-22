@@ -33,7 +33,7 @@ export default async (req, res) => {
         console.log(average);
         console.log(observations);
 
-        await washroom.update({ rating: parseInt(average), observations }, {transaction});
+        await washroom.update({ ratxing: parseInt(average), observations }, {transaction});
     });
 
     res.json({
