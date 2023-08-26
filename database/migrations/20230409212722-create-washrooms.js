@@ -13,10 +13,13 @@ module.exports = {
         type: Sequelize.TEXT
       },
       rating: {
-        type: Sequelize.INTEGER
+        type: Sequelize.FLOAT
       },
       observations: {
         type: Sequelize.ARRAY(Sequelize.BOOLEAN)
+      },
+      entryDates: {
+        type: Sequelize.ARRAY(Sequelize.DATE)
       },
       createdAt: {
         allowNull: false,
