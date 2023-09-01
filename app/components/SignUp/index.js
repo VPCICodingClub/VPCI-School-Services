@@ -24,7 +24,7 @@ export default {
                     isClubAccount: this.isClubAccount,
                 });
                 updateToken(token);
-                this.$router.push({ name: 'account' });
+                this.$router.push({ name: 'dashboard' });
             } else {
                 alert('Passwords do not match!');
             }

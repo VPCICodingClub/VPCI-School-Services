@@ -16,7 +16,7 @@ module.exports = {
       description: {
         type: Sequelize.TEXT
       },
-      logo: {
+      logoLink: {
         type: Sequelize.TEXT
       },
       slug: {
@@ -26,14 +26,17 @@ module.exports = {
       supervisors: {
         type: Sequelize.ARRAY(Sequelize.TEXT)
       },
-      leaders: {
+      executives: {
         type: Sequelize.ARRAY(Sequelize.TEXT)
       },
       schedule: {
         type: Sequelize.TEXT
       },
-      social: {
+      socialMedias: {
         type: Sequelize.ARRAY(Sequelize.TEXT)
+      },
+      joinLink: {
+        type: Sequelize.TEXT
       },
       createdAt: {
         allowNull: false,

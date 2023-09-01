@@ -16,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   Washrooms.init({
     rating: DataTypes.INTEGER,
     observations: DataTypes.ARRAY(DataTypes.BOOLEAN), // true mean WR is open, false is closed.
+    observationDates: DataTypes.ARRAY(DataTypes.DATE),
   }, {
     sequelize,
     modelName: 'Washrooms',

@@ -20,8 +20,12 @@ function getUser() {
 
 function isAuthed() {
     const user = getUser();
-    const nowInSeconds = Math.round(Date.now()/1000);
-    const expired = nowInSeconds >= user.exp;
+    let expired = true;
+
+    if (user) {
+        const nowInSeconds = Math.round(Date.now()/1000);
+        expired = nowInSeconds >= user.exp;
+    }
 
     return user && !expired;
 }

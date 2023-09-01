@@ -1,0 +1,47 @@
+<h2>New Club</h2>
+<br><br><br>
+<form @submit.prevent="submit">
+    <div>
+        <label>Name</label>
+        <input type="text" autocomplete="off" placeholder="name" v-model="club.name">
+    </div>
+    <div>
+        <label>URL Slug</label>
+        <input type="text" autocomplete="off" placeholder="name" v-model="club.slug">
+    </div>
+    <div>
+        <label>Image Link</label>
+        <input type="url" autocomplete="off" placeholder="www.example.com" v-model="club.logoLink">
+    </div>
+    <div>
+        <label>Description</label>
+        <input type="text" autocomplete="off" placeholder="description" v-model="club.description">
+    </div>
+    <div>
+        <label>Schedule</label>
+        <input type="text" autocomplete="off" placeholder="schedule" v-model="club.schedule">
+    </div>
+
+    <div>
+        <label>Executive(s)</label>
+        <input type="text" autocomplete="off" placeholder="exec name" v-model="club.executives[i]" v-for="(executive, i) in club.executives">
+        <button @click="club.executives.push('')">Add Exec</button>
+    </div>
+    <div>
+        <label>Supervisor(s)</label>
+        <input type="text" autocomplete="off" placeholder="supervisor name" v-model="club.supervisors[i]" v-for="(supervisor, i) in club.supervisors">
+        <button @click="club.supervisors.push('')">Add Supervisor</button>
+    </div>
+    <div>
+        <label>Social Media(s)</label>
+        <input type="text" autocomplete="off" placeholder="socialMedia name" v-model="club.socialMedias[i]" v-for="(socialMedia, i) in club.socialMedias">
+        <button @click="club.socialMedias.push('')">Add Social Media</button>
+    </div>
+    {{club}}
+
+<!--     <div>
+        <label>Join Link</label>
+        <input type="url" autocomplete="off" placeholder="www.example.com" v-model="joinLink">
+    </div> -->
+</form>
+<button v-if="this.$route.name === 'editClub'" @click="deleteClub">Delete Club</button>

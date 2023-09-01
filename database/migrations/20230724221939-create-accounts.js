@@ -26,10 +26,11 @@ module.exports = {
         allowNull: false,
         type: Sequelize.TEXT
       },
-      isClubAccount: {
-        allowNull: false,
-        type: Sequelize.BOOLEAN
-      },
+      // type: {
+      //   allowNull: false,
+      //   type: Sequelize.TEXT,
+      //   default: 'member',
+      // },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

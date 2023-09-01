@@ -28,3 +28,16 @@ Now that the database works,
 1. Visit `localhost` in your browser.
 
 When making changes to the backend, restart the server for them to work.
+
+## How it works
+
+### Accounts
+- Account creation can only be done through a link sent to an exec of a club or a staff member.
+- Users are not encouraged to share accounts.
+
+### Clubs and Accounts
+- A user will create a club.
+- No other user can create a club under the same name.
+- The owner of the club can add more execs to it and they too can add others.
+- Execs can remove themselves from clubs.
+- Staff can remove people from clubs.

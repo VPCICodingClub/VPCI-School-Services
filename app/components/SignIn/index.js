@@ -15,7 +15,7 @@ export default {
         async auth() {
             const { data: { token } } = await internalApi.post('login', { username: this.username, password: this.password });
             updateToken(token);
-            this.$router.push({ name: 'account' });
+            this.$router.push({ name: 'dashboard' });
         }
     }
 };

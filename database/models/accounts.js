@@ -11,17 +11,22 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Accounts.belongsToMany(models.Clubs, { through: 'AccountsClubs' });
+      // models.Clubs.belongsToAccounts = Accounts.hasOne(models.Clubs);
+      // models.Posts.belongsToAccounts = Accounts.hasMany(models.Posts);
+      // models.Events.belongsToAccounts = Accounts.hasMany(models.Events);
     }
   }
   Accounts.init({
-    username: { type: DataTypes.TEXT, allowNull: false, uniqe: true },
+    username: { type: DataTypes.TEXT, allowNull: false, unique: true },
     passwordHash: { type: DataTypes.TEXT, allowNull: false },
     salt: { type: DataTypes.TEXT, allowNull: false },
     email: { type: DataTypes.TEXT, allowNull: false },
-    isClubAccount: { type: DataTypes.BOOLEAN, allowNull: false },
+    // type: { type: DataTypes.TEXT, allowNull: false },
   }, {
     sequelize,
     modelName: 'Accounts',
   });
   return Accounts;
 };
+

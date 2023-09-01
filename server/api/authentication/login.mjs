@@ -39,7 +39,7 @@ export default async (req, res) => {
         token
       });
     } else {
-      return res.status(400).json({ message: 'Login unsuccessful.' });
+      return res.status(400).json({ message: 'Login unsuccessful. Wrong password.' });
     }
   } catch (error) {
     return res.status(500).json({
