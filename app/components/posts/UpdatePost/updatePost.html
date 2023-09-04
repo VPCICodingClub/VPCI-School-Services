@@ -1,0 +1,14 @@
+<div>
+    id: {{post.id}}
+    <form @submit.prevent="submit">
+        <div>
+            <input type="text" autocomplete="off" placeholder="title" v-model="editedPost.title">
+        </div>
+        <div>
+            <input type="text" autocomplete="off" placeholder="description" v-model="editedPost.description">
+        </div>
+        <button type="submit" class="fa-solid fa-arrow-right"></button>
+    </form>
+    <button v-if="!isNewPost" @click="deletePost">Delete</button>
+    <button v-if="!isNewPost" @click="swapComponent('post')" >Cancel</button>
+</div>

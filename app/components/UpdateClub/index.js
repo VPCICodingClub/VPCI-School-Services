@@ -1,9 +1,15 @@
 import template from './updateClub.html';
 import { isAuthed, getUser, clearUser } from 'Lib/auth';
 import internalApi from 'Lib/internalApi';
+import UpdatePost from '../posts/UpdatePost';
+import PostContainer from '../posts/PostContainer';
 
 export default {
     template,
+    components: {
+        PostContainer,
+        UpdatePost,
+    },
     data() {
         return {
             user: getUser(),
@@ -12,16 +18,9 @@ export default {
                 executives: [],
                 supervisors: [],
                 socialMedias: [],
-                // Accounts: [],
             },
-            // clubName: 'Meth Club',
-            // imageLink: '',
-            // description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus dictum, lorem ac finibus gravida, libero nulla ullamcorper mauris, congue sagittis urna mi ac tortor. Aenean commodo porttitor bibendum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-            // schedule: 'Lunch on Monday',
-            // executives: ['hi', 'helo'],
-            // supervisors: ['peepee',],
-            // socialMedias: ['asgvdtcmjyyegmshstudik',],
-            // joinLink: 'www.google.com',
+            posts: [],
+            displayAddPostButton: true,
         }
     },
     async created() {
@@ -29,11 +28,23 @@ export default {
             this.title = `Editing ${this.club.name} Info`
 
             const slug = this.$route.params.slug;
-            const { data } = await internalApi.get('clubs', { query: slug });
-            this.club = data[0];
+            const { data: clubs } = await internalApi.get('clubs', { query: slug });
+            this.club = clubs[0];
+            // console.log(this.club);
+
+            this.getPosts();
         }
     },
     methods: {
+        async getPosts() { // Called when a post was edited or made.
+            const { data: posts } = await internalApi.get('posts', { query: this.club.id });
+            this.posts = posts;
+
+            this.displayAddPostButton = true; // In case a new post was added, this will ensure the button is shown.
+        },
+        swapComponent: function(component) {
+          this.currentComponent = component;
+        },
         submit() {
             (this.$route.name === 'editClub') ? this.editClub() : this.createClub();
         },

@@ -15,6 +15,14 @@ module.exports = {
       description: {
         type: Sequelize.TEXT
       },
+      ClubId: {
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'Clubs',
+          key: 'id'
+        }
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

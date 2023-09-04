@@ -21,7 +21,7 @@ export default {
                     username: this.username,
                     password: this.password,
                     email: this.email,
-                    isClubAccount: this.isClubAccount,
+                    // isClubAccount: this.isClubAccount,
                 });
                 updateToken(token);
                 this.$router.push({ name: 'dashboard' });

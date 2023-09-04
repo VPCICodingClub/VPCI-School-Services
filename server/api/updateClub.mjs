@@ -3,24 +3,32 @@ import db from '../../database/models/index.js'; // The models are used in the a
 // Import only the Clubs model from the database.
 const { sequelize, Clubs } = db;
 
+function removeEmptyString(el){
+  return el != "";
+}
+
 export default async (req, res) => {
   const { editedClub } = req.body;
   const { clubId } = req.params;
   console.log(clubId);
 
-  if (!editedClub.name.length) {
+  if (!editedClub.name) {
     return res.status(400).json({
       message: 'Club name cannot be empty.',
       data: {},
     });
   }
 
-  if (!editedClub.slug.length) {
+  if (!editedClub.slug) {
     return res.status(400).json({
       message: 'URL slug cannot be empty.',
       data: {},
     });
   }
+
+  editedClub.executives = editedClub.executives.filter(removeEmptyString);
+  editedClub.supervisors = editedClub.supervisors.filter(removeEmptyString);
+  editedClub.socialMedias = editedClub.socialMedias.filter(removeEmptyString);
 
   try {
     await sequelize.transaction(async (transaction) => {
