@@ -5,6 +5,7 @@ export default {
     props: ['post', 'clubName', 'swapComponent'],
     data() {
         return {
+            editable: this.$route.name === 'editClub',
             currentComponent: 'post',
         }
     },

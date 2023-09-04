@@ -1,6 +1,6 @@
 <div>
-    <h3>{{post.title}}</h3>
+    <div>{{post.title}}</div>
     <div>{{clubName}}</div>
     <div>{{post.description}}</div>
-    <button @click="swapComponent('update-post')" >Edit</button>
+    <button v-if="editable" @click="swapComponent('update-post')" >Edit</button>
 </div>
