@@ -26,7 +26,7 @@ export default {
         async getClub(id) {
             const { data: clubs } = await internalApi.get('clubs', { query: id });
             this.club = clubs[0];
-            const { data: posts } = await internalApi.get('clubs', { query: this.club.id });
+            const { data: posts } = await internalApi.get('posts', { query: this.club.id });
             this.posts = posts[0];
         }
     }

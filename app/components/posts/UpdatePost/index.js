@@ -16,15 +16,14 @@ export default {
     // },
     methods: {
         async submit() {
-            if (!this.editedPost.title) {
-                const { status, data: { message, data: post } } = await internalApi.put('posts', { post: this.editedPost, clubId: this.clubId });
-            }
+            if (!this.editedPost.title) { return; }
+            const { status, data: { message, data: post } } = await internalApi.put('posts', { post: this.editedPost, clubId: this.clubId });
 
             if (status === 500 || status === 400) {
                 alert(message);
-            } // else {
-            //     alert(`${message} ${post.title} exists!`);
-            // }
+            } else {
+                alert(`${message} ${post.title} exists!`);
+            }
 
             if (!this.isNewPost) {
                 this.swapComponent('post');
