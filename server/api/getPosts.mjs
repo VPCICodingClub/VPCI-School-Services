@@ -4,7 +4,7 @@ import db from '../../database/models/index.js'; // The models are used in the a
 const { Posts } = db;
 
 export default async (req, res) => {
-  const { ClubId } = req.query; // Search query.
+  const { query: ClubId } = req.query; // Search query.
   let options = { order: [
       ['id', 'DESC'], // sort in ascending order of ID's
     ], };

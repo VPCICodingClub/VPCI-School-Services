@@ -16,6 +16,8 @@ export default {
     // },
     methods: {
         async submit() {
+            this.editedPost.ClubId = this.clubId;
+            // console.log(this.editedPost);
             if (!this.editedPost.title) { return; }
             const { status, data: { message, data: post } } = await internalApi.put('posts', { post: this.editedPost, clubId: this.clubId });
 

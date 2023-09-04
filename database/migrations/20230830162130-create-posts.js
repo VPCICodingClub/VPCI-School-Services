@@ -17,6 +17,7 @@ module.exports = {
       },
       ClubId: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         onDelete: 'CASCADE',
         references: {
           model: 'Clubs',

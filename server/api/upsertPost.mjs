@@ -10,7 +10,14 @@ export default async (req, res) => {
 
   if (!post.title) {
     return res.status(400).json({
-      message: 'Club name cannot be empty.',
+      message: 'Post title cannot be empty.',
+      data: {},
+    });
+  }
+
+  if (!post.ClubId) {
+    return res.status(400).json({
+      message: 'Must have a valid ClubId.',
       data: {},
     });
   }
