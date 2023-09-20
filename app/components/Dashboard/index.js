@@ -1,7 +1,7 @@
 import template from './dashboard.html';
-import './dashboard.css'
 import { isAuthed, getUser, clearUser } from 'Lib/auth';
 import internalApi from 'Lib/internalApi';
+import './dashboard.css';
 
 export default {
     template,

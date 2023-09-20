@@ -11,13 +11,16 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Events.belongsTo(models.Clubs);
     }
   }
   Events.init({
     title: {type: DataTypes.TEXT, allowNull:false},
     description: DataTypes.TEXT,
-    date: DataTypes.DATE,
     location: DataTypes.TEXT,
+    url: DataTypes.TEXT,
+    start: DataTypes.DATE,
+    end: DataTypes.DATE,
   }, {
     sequelize,
     modelName: 'Events',

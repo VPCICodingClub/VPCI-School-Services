@@ -15,6 +15,8 @@ import updateWashroomStatus from './updateWashroomStatus.mjs';
 import register from './authentication/register.mjs';
 import login from './authentication/login.mjs';
 import getAccountData from './getAccountData.mjs';
+import getEvents from './getEvents.mjs';
+import addEvent from './addEvent.mjs';
 
 // https://expressjs.com/en/guide/routing.html (scroll down for express.Router)
 const router = express.Router();
@@ -37,5 +39,7 @@ router.post(apiPath + '/washroom-status', updateWashroomStatus);
 router.post(apiPath + '/register', register);
 router.post(apiPath + '/login', login);
 router.get(apiPath + '/accounts', authorize, getAccountData);
+router.get(apiPath + '/events', getEvents);
+router.post(apiPath + '/events', authorize, addEvent);
 
 export default router;

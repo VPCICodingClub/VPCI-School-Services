@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Clubs.belongsToMany(models.Accounts, { through: 'AccountsClubs' });
       Clubs.hasMany(models.Posts);
+      Clubs.hasMany(models.Events);
     }
   }
   Clubs.init({ // You can add more attributes here, but also add them in migrations.

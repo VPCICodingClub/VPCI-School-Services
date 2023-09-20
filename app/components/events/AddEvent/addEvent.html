@@ -1,0 +1,9 @@
+<div>Enter Event information</div>
+<div>{{clubId}}</div>
+<form @submit.prevent="submit">
+    <input type="text" autocomplete="off" placeholder="Title" v-model="event.title">
+    <input type="url" autocomplete="off" placeholder="www.example.com" v-model="event.url">
+    <input type="date" autocomplete="off" v-model="event.start">
+    <input type="date" autocomplete="off" v-model="event.end">
+    <button>Submit</button>
+</form>

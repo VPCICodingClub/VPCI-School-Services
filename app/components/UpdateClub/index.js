@@ -3,12 +3,16 @@ import { isAuthed, getUser, clearUser } from 'Lib/auth';
 import internalApi from 'Lib/internalApi';
 import UpdatePost from '../posts/UpdatePost';
 import PostContainer from '../posts/PostContainer';
+import Calendar from '../Calendar';
+import AddEvent from '../events/AddEvent';
 
 export default {
     template,
     components: {
         PostContainer,
         UpdatePost,
+        Calendar,
+        AddEvent,
     },
     data() {
         return {

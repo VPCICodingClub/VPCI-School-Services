@@ -76,3 +76,7 @@
 
 <br>
 <button v-if="this.$route.name === 'editClub'" @click="deleteClub">Delete Club</button>
+<br>
+<h3>Events</h3>
+<AddEvent :clubId="club.id" />
+<Calendar />
