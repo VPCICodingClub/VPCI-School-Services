@@ -1,0 +1,16 @@
+svg {
+    margin-top: 10rem;
+}
+
+.location{
+    font-family: 'Indie Flower';
+    font-weight: 1000;
+    color: black;
+    font-size: 3rem;
+}
+.rating{
+    font-family: 'Oswald';
+    font-weight: 700;
+    color: forestgreen;
+    font-size: 2rem;
+}

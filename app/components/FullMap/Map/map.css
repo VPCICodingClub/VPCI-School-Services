@@ -1,0 +1,25 @@
+svg {
+    margin-top: 10rem;
+}
+
+.room {
+    fill: black;
+    stroke: none;
+}
+
+.room-info {
+    fill: red;
+}
+
+/*.room:hover {
+    fill: white;
+    stroke: none;
+}
+*/
+.boys {
+    fill: lightblue;
+}
+
+.girls {
+    fill: pink;
+}

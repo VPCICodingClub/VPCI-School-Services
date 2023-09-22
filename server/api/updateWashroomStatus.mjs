@@ -1,5 +1,5 @@
 import db from '../../database/models/index.js';
-
+import calculateRating from '../../server/lib/calculateRating.mjs';
 const { sequelize, Washrooms } = db;
 
 export default async (req, res) => {
@@ -23,19 +23,18 @@ export default async (req, res) => {
         });
     }
     const observations = [ ...washroom.observations ];
+    const entryDates = [ ...washroom.entryDates];
 
     await sequelize.transaction(async (transaction) => {
         observations.push(isOpen);
+        entryDates.push(new Date());
+        const washroomRating = calculateRating(observations, entryDates);
 
-        const sum = observations.reduce((total, i) => total + i, 0);
-        const average = (sum / observations.length) * 100;
+        console.log(washroomRating);
 
-        console.log(average);
-        console.log(observations);
-
-        await washroom.update({ rating: parseInt(average), observations }, {transaction});
+        await washroom.update({ rating: washroomRating, observations, entryDates }, {transaction});
     });
-
+    
     res.json({
         message: 'Thx!',
         data: washroom,

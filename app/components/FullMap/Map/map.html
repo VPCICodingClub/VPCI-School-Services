@@ -1,0 +1,38 @@
+<svg
+   viewBox="0 0 211.66666 132.29167"
+   version="1.1"
+   id="svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.165412px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 188.11875,27.78125 1e-5,12.435417 H 21.166667 v 4.7625 l 166.952083,-10e-7 v 63.764584 h 4.7625 v -80.9625 z"
+       id="path2334" />
+  </g>
+  <g style="opacity:1">
+     <g v-for="room in rooms" @click="toggle(room)">
+      <rect
+         :class="room.class"
+         width="1.3229166"
+         height="1.3229166"
+         :x="room.x"
+         :y="room.y" />
+      <rect
+         class="room-info"
+         v-show="room.showInfo"
+         width="5"
+         height="5"
+         :x="room.x"
+         :y="room.y" />
+      </g>
+   <!-- <rect
+      v-for="washroom in washrooms"
+      class="washroom-info"
+      width="3"
+      height="3"
+      :x="washroom.x"
+      :y="washroom.y" /> -->
+  </g>
+</svg>

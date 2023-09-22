@@ -9,13 +9,16 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      location: {
+        type: Sequelize.TEXT
+      },
       rating: {
-        type: Sequelize.INTEGER
+        type: Sequelize.FLOAT
       },
       observations: {
         type: Sequelize.ARRAY(Sequelize.BOOLEAN)
       },
-      observationDates: {
+      entryDates: {
         type: Sequelize.ARRAY(Sequelize.DATE)
       },
       createdAt: {

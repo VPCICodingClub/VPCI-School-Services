@@ -3,6 +3,7 @@ import About from '../components/About';
 import Home from '../components/Home';
 import Clubs from '../components/Clubs';
 import ClubDetails from '../components/ClubDetails';
+import FullMap from '../components/FullMap';
 import SignIn from '../components/SignIn';
 import SignUp from '../components/SignUp';
 import Dashboard from '../components/Dashboard';
@@ -40,6 +41,11 @@ const routes = [{
             name: 'clubDetails',
             path: 'clubs/:id',
             component: ClubDetails,
+        },
+        {
+            name: 'map',
+            path: 'map',
+            component: FullMap,
         },
         {
             name: 'sign-in',
