@@ -1,0 +1,78 @@
+<h2>{{title}}</h2>
+<br><br><br>
+<form @submit.prevent="submit">
+    <div>
+        <label>Name</label>
+        <input type="text" autocomplete="off" placeholder="name" v-model="club.name">
+    </div>
+    <div>
+        <label>URL Slug</label>
+        <input type="text" autocomplete="off" placeholder="name" v-model="club.slug">
+    </div>
+    <div>
+        <label>Image Link</label>
+        <input type="url" autocomplete="off" placeholder="www.example.com" v-model="club.logoLink">
+    </div>
+    <div>
+        <label>Description</label>
+        <input type="text" autocomplete="off" placeholder="description" v-model="club.description">
+    </div>
+    <div>
+        <label>Schedule</label>
+        <input type="text" autocomplete="off" placeholder="schedule" v-model="club.schedule">
+    </div>
+
+    <div>
+        <label>Executive(s)</label>
+        <div v-for="(executive, i) in club.executives">
+            <input type="text" autocomplete="off" placeholder="exec name" v-model="club.executives[i]">
+            <button type="button" @click="club.executives.splice(i, 1);">Remove</button>
+        </div>
+
+        <button type="button" @click="club.executives.push('')">Add Exec</button>
+    </div>
+    <div>
+        <label>Supervisor(s)</label>
+        <div v-for="(supervisor, i) in club.supervisors">
+            <input type="text" autocomplete="off" placeholder="supervisor name" v-model="club.supervisors[i]">
+            <button type="button" @click="club.supervisors.splice(i, 1);">Remove</button>
+        </div>
+        <button type="button" @click="club.supervisors.push('')">Add Supervisor</button>
+    </div>
+    <div>
+        <label>Social Media(s)</label>
+        <div v-for="(socialMedia, i) in club.socialMedias">
+            <input type="text" autocomplete="off" placeholder="socialMedia name" v-model="club.socialMedias[i]">
+            <button type="button" @click="club.socialMedias.splice(i, 1);">Remove</button>
+        </div>
+        <button type="button" @click="club.socialMedias.push('')">Add Social Media</button>
+    </div>
+    <button type="submit">Submit</button>
+    {{club}}
+
+<!--     <div>
+        <label>Join Link</label>
+        <input type="url" autocomplete="off" placeholder="www.example.com" v-model="joinLink">
+    </div> -->
+</form>
+
+<h3>Posts</h3>
+{{posts}}
+<br>
+<button @click="displayAddPostButton = false" v-if="displayAddPostButton" >New Post</button>
+<update-post v-if="!displayAddPostButton"
+    :isNewPost="true"
+    :clubId="club.id"
+    :post="{}"
+    :getPosts="getPosts"></update-post>
+
+<div v-for="post in posts">
+    <post-container
+        :post="post"
+        :clubName="club.name"
+        :clubId="club.id"
+        :getPosts="getPosts"></post-container>
+</div>
+
+<br>
+<button v-if="this.$route.name === 'editClub'" @click="deleteClub">Delete Club</button>

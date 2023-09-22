@@ -11,17 +11,20 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Clubs.belongsToMany(models.Accounts, { through: 'AccountsClubs' });
+      Clubs.hasMany(models.Posts);
     }
   }
   Clubs.init({ // You can add more attributes here, but also add them in migrations.
     name: { type: DataTypes.TEXT, allowNull: false },
     description: DataTypes.TEXT,
-    logo: DataTypes.TEXT,
+    logoLink: DataTypes.TEXT,
     slug: { type: DataTypes.TEXT, allowNull: false },
     supervisors: DataTypes.ARRAY(DataTypes.TEXT),
-    leaders: DataTypes.TEXT,
+    executives: DataTypes.ARRAY(DataTypes.TEXT),
     schedule: DataTypes.TEXT,
-    social: DataTypes.ARRAY(DataTypes.TEXT),
+    socialMedias: DataTypes.ARRAY(DataTypes.TEXT),
+    joinLink: DataTypes.TEXT,
   }, {
     sequelize,
     modelName: 'Clubs',
