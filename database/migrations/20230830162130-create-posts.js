@@ -2,38 +2,27 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Clubs', {
+    await queryInterface.createTable('Posts', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
-        allowNull: false,
+      title: {
         type: Sequelize.TEXT
       },
       description: {
         type: Sequelize.TEXT
       },
-      logo: {
-        type: Sequelize.TEXT
-      },
-      slug: {
+      ClubId: {
+        type: Sequelize.INTEGER,
         allowNull: false,
-        type: Sequelize.TEXT
-      },
-      supervisors: {
-        type: Sequelize.ARRAY(Sequelize.TEXT)
-      },
-      leaders: {
-        type: Sequelize.ARRAY(Sequelize.TEXT)
-      },
-      schedule: {
-        type: Sequelize.TEXT
-      },
-      social: {
-        type: Sequelize.ARRAY(Sequelize.TEXT)
+        onDelete: 'CASCADE',
+        references: {
+          model: 'Clubs',
+          key: 'id'
+        }
       },
       createdAt: {
         allowNull: false,
@@ -46,6 +35,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Clubs');
+    await queryInterface.dropTable('Posts');
   }
 };

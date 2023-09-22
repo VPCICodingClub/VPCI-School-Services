@@ -28,3 +28,18 @@ Now that the database works,
 1. Visit `localhost` in your browser.
 
 When making changes to the backend, restart the server for them to work.
+
+## How it works
+
+### Accounts
+Account creation can only be done through a link sent to an exec of a club or a staff member. Users are not encouraged to share accounts.
+
+### Clubs and Accounts
+Users will create clubs and be able to edit them from the account dashboard. Other users can be allowed to edit clubs by anyone who has those permissions. Users can remove themselves from clubs and admin accounts (staff).
+
+### Posts and Accounts
+Posts are tied to clubs and any account which has access to a club can edit its posts.
+
+### Events and Accounts
+Events are also tied to clubs and any account which has access to the club and edit its events. Events will show up on the event calendar on the home page. There will also be events that are related to the school and those will be made by admin accounts (staff).
+

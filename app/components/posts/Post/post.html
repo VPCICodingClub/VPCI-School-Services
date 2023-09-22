@@ -1,0 +1,7 @@
+<div>
+    {{post}}
+    <div>{{post.title}}</div>
+    <div>{{clubName}}</div>
+    <div>{{post.description}}</div>
+    <button v-if="editable" @click="swapComponent('update-post')" >Edit</button>
+</div>

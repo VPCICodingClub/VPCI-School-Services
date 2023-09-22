@@ -5,10 +5,21 @@ import { createApp } from 'vue';
 import { createRouter, createWebHashHistory } from 'vue-router';
 import routes from './routes'; // All routes will be in this folder to keep things tidy.
 
+import { isAuthed } from 'Lib/auth';
+
 // The router is what allows you to go to different pages on the website.
 const router = createRouter({
     history: createWebHashHistory(),
     routes,
+});
+
+
+router.beforeEach((to, from, next) => {
+  if (to.meta.requiresAuth) {
+    if (isAuthed()) return next();
+    return next('/sign-in');
+  }
+  return next();
 });
 
 const app = createApp({

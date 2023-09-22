@@ -1,3 +1,4 @@
+import { getToken } from 'Lib/auth';
 // This file is in its own folder since it's a file needed in many components.
 // It allows it to have an alias which makes it easy to import.
 
@@ -29,11 +30,18 @@ async function APIRequest(url, data = null, options = {}) {
         throw new Error('Please provide data');
     }
 
+    const authToken = getToken();
+
+    if (authToken) {
+        options.headers = { ...options.headers, Authorization: `JWT ${authToken}` };
+    }
+
     // The spread operator (...) adds the contents of an object to the object it's used in.
     // So these two objects are being combined here.
     const requestOptions = {
         ...options,
         ...defaultOptions,
+        headers: { ...options.headers, ...defaultOptions.headers }
     };
 
     let fullUrl = `${apiPath}/${url}`; // The api is accessed through a url.

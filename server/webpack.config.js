@@ -14,7 +14,7 @@ module.exports = {
         }
     },
     output: {
-        filename: '[hash].index.js', // The bundled file made by webpack
+        filename: '[fullhash].index.js', // The bundled file made by webpack
         path: path.resolve(__dirname, '../build'),
         clean: true,
         publicPath: '/',

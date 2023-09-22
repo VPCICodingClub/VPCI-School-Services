@@ -15,6 +15,9 @@ module.exports = {
       observations: {
         type: Sequelize.ARRAY(Sequelize.BOOLEAN)
       },
+      observationDates: {
+        type: Sequelize.ARRAY(Sequelize.DATE)
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

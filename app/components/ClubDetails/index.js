@@ -1,19 +1,19 @@
 import template from './clubDetails.html';
 import internalApi from 'Lib/internalApi';
-import Post from './Post';
-import Event from './Event';
+import Post from '../posts/Post';
+// import Event from './Event';
 import './clubDetails.css';
 
 export default {
     template,
     components: {
         Post,
-        Event,
+        // Event,
     },
     data() {
         return {
-            club: null,
-            posts: null,
+            club: {},
+            posts: [],
         }
     },
     beforeRouteUpdate(to) {
@@ -26,8 +26,8 @@ export default {
         async getClub(id) {
             const { data: clubs } = await internalApi.get('clubs', { query: id });
             this.club = clubs[0];
-            const { data: posts } = await internalApi.get('clubs', { query: this.club.id });
-            this.posts = posts[0];
+            const { data: posts } = await internalApi.get('posts', { query: this.club.id });
+            this.posts = posts;
         }
     }
 };

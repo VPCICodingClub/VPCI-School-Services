@@ -3,7 +3,7 @@
     <div v-if="club" class="club-details-container">
         <div style="display: flex; flex-direction: column; align-items: center; height:100vh;">
             <div class="club-details-header" style="flex-shrink: 0;">
-                <img :src=club.logo class="club-logo">
+                <img :src=club.logoLink class="club-logo">
                 <h2>{{club.name}}</h2>
             </div>
             <div class="club-basic-info-container">
@@ -59,15 +59,16 @@
                 </div>
                 <div>
                     <h3>Posts</h3>
+                    <!-- {{posts}} -->
                     <div class="post-event-container">
-                        <post v-for="post in posts" :post="post"></post>
+                        <post v-for="post in posts" :post="post" :clubName="club.name"></post>
                     </div>
                 </div>
                 <div>
                     <h3>Events</h3>
-                    <div class="post-event-container">
+                    <!-- <div class="post-event-container">
                         <event v-for="event in events" :event="event"></event>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
