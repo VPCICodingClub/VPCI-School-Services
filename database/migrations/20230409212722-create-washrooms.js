@@ -12,9 +12,6 @@ module.exports = {
       location: {
         type: Sequelize.TEXT
       },
-      rating: {
-        type: Sequelize.FLOAT
-      },
       observations: {
         type: Sequelize.ARRAY(Sequelize.BOOLEAN)
       },

@@ -15,7 +15,6 @@ module.exports = {
     await queryInterface.bulkInsert('Washrooms', [
       {
         location: '2nd floor, boys, near exit 11',
-        rating: 100,
         observations: [true, true, true, true],
         entryDates: `{${new Date().toISOString()}, ${new Date().toISOString()}, ${new Date().toISOString()}, ${new Date().toISOString()}}`,
         createdAt: new Date(),
@@ -23,8 +22,6 @@ module.exports = {
       },
       {
         location: '2nd floor, girls, science hall',
-        rating: 75,
-        observationDates: `{${new Date().toISOString()}, ${new Date().toISOString()}}`,
         observations: [true, true, true, false],
         entryDates: `{${new Date().toISOString()}, ${new Date().toISOString()}, ${new Date().toISOString()}, ${new Date().toISOString()}}`,
         createdAt: new Date(),
@@ -32,8 +29,6 @@ module.exports = {
       },
       {
         location: '3rd floor, boys',
-        rating: 100,
-        observationDates: `{${new Date().toISOString()}, ${new Date().toISOString()}}`,
         observations: [true, true, true, true],
         entryDates: `{${new Date().toISOString()}, ${new Date().toISOString()}, ${new Date().toISOString()}, ${new Date().toISOString()}}`,
         createdAt: new Date(),
@@ -41,8 +36,6 @@ module.exports = {
       },
       {
         location: '3rd floor, girls',
-        rating: 100,
-        observationDates: `{${new Date().toISOString()}, ${new Date().toISOString()}}`,
         observations: [true, true, true, true],
         entryDates: `{${new Date().toISOString()}, ${new Date().toISOString()}, ${new Date().toISOString()}, ${new Date().toISOString()}}`,
         createdAt: new Date(),
@@ -50,8 +43,6 @@ module.exports = {
       },
       {
         location: '1st floor, gender neutral',
-        rating: 100,
-        observationDates: `{${new Date().toISOString()}, ${new Date().toISOString()}}`,
         observations: [true, true, true, true],
         entryDates: `{${new Date().toISOString()}, ${new Date().toISOString()}, ${new Date().toISOString()}, ${new Date().toISOString()}}`,
         createdAt: new Date(),

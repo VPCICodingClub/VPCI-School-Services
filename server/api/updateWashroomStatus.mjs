@@ -1,5 +1,4 @@
 import db from '../../database/models/index.js';
-import calculateRating from '../../server/lib/calculateRating.mjs';
 const { sequelize, Washrooms } = db;
 
 export default async (req, res) => {
@@ -28,13 +27,10 @@ export default async (req, res) => {
     await sequelize.transaction(async (transaction) => {
         observations.push(isOpen);
         entryDates.push(new Date());
-        const washroomRating = calculateRating(observations, entryDates);
 
-        console.log(washroomRating);
-
-        await washroom.update({ rating: washroomRating, observations, entryDates }, {transaction});
+        await washroom.update({ observations, entryDates }, {transaction});
     });
-    
+
     res.json({
         message: 'Thx!',
         data: washroom,

@@ -1,10 +1,9 @@
 import template from './miniMap.html';
 import './miniMap.css';
 import internalApi from 'Lib/internalApi';
-import calculateRating from '../../lib/calculateRating.js';
+import calculateRating from 'Lib/calculateRating.js';
 
 export default {
-   
    template,
    data() {
      return {
@@ -19,7 +18,6 @@ export default {
 
    async created(){
       this.getData();
-      this.loadWashroomRatings();
       console.log("test");
    },
    methods: {
@@ -35,13 +33,7 @@ export default {
       async getData(){
          const { data: washrooms } = await internalApi.get('washrooms', { query: '' });
          this.washrooms = washrooms;
-      },
-      async loadWashroomRatings(){
-         const { data: washrooms } = await internalApi.get('washrooms', { query: '' });
-         console.log(washrooms.length);
          for(let i = 0; i < this.washrooms.length; i++){
-            console.log(this.washrooms[i].observations);
-            console.log(this.washrooms[i].entryDates);
             this.washrooms[i].rating = calculateRating(this.washrooms[i].observations, this.washrooms[i].entryDates);
             console.log(this.washrooms[i].rating);
          }
