@@ -13,9 +13,15 @@ export default {
     },
     methods: {
         async auth() {
-            const { data: { token } } = await internalApi.post('login', { username: this.username, password: this.password });
-            updateToken(token);
-            this.$router.push({ name: 'dashboard' });
+            const { data } = await internalApi.post('login', { username: this.username, password: this.password });
+            if (data.token) {
+                alert(data.message);
+                updateToken(data.token);
+                this.$router.push({ name: 'dashboard' });
+            } else {
+                alert(data.error);
+                this.$router.push({ name: 'sign-up' });
+            }
         }
     }
 };

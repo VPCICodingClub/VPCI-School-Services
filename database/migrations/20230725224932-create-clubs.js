@@ -29,9 +29,15 @@ module.exports = {
       executives: {
         type: Sequelize.ARRAY(Sequelize.TEXT)
       },
-      schedule: {
-        type: Sequelize.TEXT
+      meetDays: {
+        type: Sequelize.ARRAY(Sequelize.ENUM('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'))
       },
+      meetTime: {
+        type: Sequelize.TIME
+      },
+      // schedule: {
+      //   type: Sequelize.TEXT
+      // },
       socialMedias: {
         type: Sequelize.ARRAY(Sequelize.TEXT)
       },

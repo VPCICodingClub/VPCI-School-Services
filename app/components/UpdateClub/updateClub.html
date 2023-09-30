@@ -19,34 +19,23 @@
     </div>
     <div>
         <label>Schedule</label>
-        <input type="text" autocomplete="off" placeholder="schedule" v-model="club.schedule">
+        <select v-model="club.meetDays" multiple>
+            <option v-for="day in daysOfWeek" value="day">{{day}}</option>
+        </select>
+        <input type="time" v-model="club.meetTime" min="07:00" max="20:00" />
     </div>
-
-    <div>
-        <label>Executive(s)</label>
-        <div v-for="(executive, i) in club.executives">
-            <input type="text" autocomplete="off" placeholder="exec name" v-model="club.executives[i]">
-            <button type="button" @click="club.executives.splice(i, 1);">Remove</button>
-        </div>
-
-        <button type="button" @click="club.executives.push('')">Add Exec</button>
-    </div>
-    <div>
-        <label>Supervisor(s)</label>
-        <div v-for="(supervisor, i) in club.supervisors">
-            <input type="text" autocomplete="off" placeholder="supervisor name" v-model="club.supervisors[i]">
-            <button type="button" @click="club.supervisors.splice(i, 1);">Remove</button>
-        </div>
-        <button type="button" @click="club.supervisors.push('')">Add Supervisor</button>
-    </div>
-    <div>
-        <label>Social Media(s)</label>
-        <div v-for="(socialMedia, i) in club.socialMedias">
-            <input type="text" autocomplete="off" placeholder="socialMedia name" v-model="club.socialMedias[i]">
-            <button type="button" @click="club.socialMedias.splice(i, 1);">Remove</button>
-        </div>
-        <button type="button" @click="club.socialMedias.push('')">Add Social Media</button>
-    </div>
+    <array-input
+        :array="club.executives"
+        :title="'Executive(s)'"
+        :placeholder="'Exec name'" />
+    <array-input
+        :array="club.supervisors"
+        :title="'Supervisor(s)'"
+        :placeholder="'Supervisor name'" />
+    <array-input
+        :array="club.socialMedias"
+        :title="'Social Media(s)'"
+        :placeholder="'Social media username'" />
     <button type="submit">Submit</button>
     {{club}}
 

@@ -7,63 +7,8 @@
             <h4>{{club.name}}</h4>
         </router-link>
     </div>
-    <router-link :to="{ name: 'createClub' }">Create New Club</router-link>
-    <!-- <button @click="account.Clubs.push({})">Create New Club</button> -->
+    <router-link :to="{ name: 'createClub' }">Create New Club</router-link>>
     <h3>Your Posts</h3>
-<!--     <form>
-        <div>
-            <label>Club Name</label>
-            <input type="text" autocomplete="off" placeholder="name" v-model="newClubName">
-        </div>
-        <button @click="createClub">Create Club</button>
-    </form> -->
-
- <!--    <div v-for="(club, index) in account.Clubs">
-        <h3>Club Details</h3>
-        <form>
-            <div>
-                <label>Club Name</label>
-                <input type="text" autocomplete="off" placeholder="name" v-model="account.Clubs[index].name">
-            </div>
-            <div>
-                <label>Image Link</label>
-                <input type="url" autocomplete="off" placeholder="www.example.com" v-model="account.Clubs[index].logoLink">
-            </div>
-            <div>
-                <label>Description</label>
-                <input type="text" autocomplete="off" placeholder="description" v-model="account.Clubs[index].description">
-            </div>
-            <div>
-                <label>Schedule</label>
-                <input type="text" autocomplete="off" placeholder="schedule" v-model="account.Clubs[index].schedule">
-            </div>
-
-            <div>
-                <label>Executive(s)</label>
-                <input type="text" autocomplete="off" placeholder="exec name" v-model="account.Clubs[index].executives[i]" v-for="(executive, i) in account.Clubs[index].executives">
-                <button @click="account.Clubs[index].executives.push('')">Add Exec</button>
-            </div>
-            <div>
-                <label>Supervisor(s)</label>
-                <input type="text" autocomplete="off" placeholder="supervisor name" v-model="account.Clubs[index].supervisors[i]" v-for="(supervisor, i) in account.Clubs[index].supervisors">
-                <button @click="account.Clubs[index].supervisors.push('')">Add Supervisor</button>
-            </div>
-            <div>
-                <label>Social Media(s)</label>
-                <input type="text" autocomplete="off" placeholder="socialMedia name" v-model="account.Clubs[index].socialMedias[i]" v-for="(socialMedia, i) in account.Clubs[index].socialMedias">
-                <button @click="account.Clubs[index].socialMedias.push('')">Add Social Media</button>
-            </div>
-
-            <div>
-                <label>Join Link</label>
-                <input type="url" autocomplete="off" placeholder="www.example.com" v-model="joinLink">
-            </div>
-
-            <div>
-                <button @click="log">LOG</button>
-            </div>
-        </form>
-    </div> -->
     <button @click="logout">Logout</button>
     <br>
     {{account}}

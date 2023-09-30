@@ -3,16 +3,19 @@ import { isAuthed, getUser, clearUser } from 'Lib/auth';
 import internalApi from 'Lib/internalApi';
 import UpdatePost from '../posts/UpdatePost';
 import PostContainer from '../posts/PostContainer';
+import ArrayInput from './ArrayInput';
 
 export default {
     template,
     components: {
         PostContainer,
         UpdatePost,
+        ArrayInput,
     },
     data() {
         return {
             user: getUser(),
+            daysOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thrusday', 'Friday', 'Saturday', 'Sunday'],
             title: 'New Club',
             club: {
                 executives: [],
