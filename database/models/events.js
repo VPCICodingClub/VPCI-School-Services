@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     title: {type: DataTypes.TEXT, allowNull:false},
     description: DataTypes.TEXT,
     location: DataTypes.TEXT,
-    url: DataTypes.TEXT,
+    link: DataTypes.TEXT,
     start: DataTypes.DATE,
     end: DataTypes.DATE,
   }, {

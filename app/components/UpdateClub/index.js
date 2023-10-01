@@ -24,6 +24,7 @@ export default {
                 socialMedias: [],
             },
             posts: [],
+            events: [],
             displayAddPostButton: true,
         }
     },
@@ -37,6 +38,8 @@ export default {
             // console.log(this.club);
 
             this.getPosts();
+
+            this.getEvents();
         }
     },
     methods: {
@@ -79,5 +82,9 @@ export default {
             alert(message);
             this.$router.push({ name: 'dashboard' });
         },
+        async getEvents(startDate, endDate) {
+            const { data: events } = await internalApi.get('events', { startDate, endDate });
+            this.events = events;
+        }
     }
 };

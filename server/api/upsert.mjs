@@ -1,21 +1,26 @@
 import db from '../../database/models/index.js'; // The models are used in the api.
 
 // Import only the Clubs model from the database.
-const { sequelize, Posts } = db;
+const { sequelize, Events, Posts } = db;
+
+const models = {
+  events: Events,
+  posts: Posts,
+}
 
 export default async (req, res) => {
-  const { post } = req.body;
-  let editedPost = {};
-  // const { postId } = req.params;
+  const data = req.body;
+  const { model } = req.params;
+  let editedData = {};
 
-  if (!post.title) {
+  if (!data.title) {
     return res.status(400).json({
-      message: 'Post title cannot be empty.',
+      message: 'Title cannot be empty.',
       data: {},
     });
   }
 
-  if (!post.ClubId) {
+  if (!data.ClubId) {
     return res.status(400).json({
       message: 'Must have a valid ClubId.',
       data: {},
@@ -23,11 +28,11 @@ export default async (req, res) => {
   }
 
   try {
-    editedPost = await Posts.upsert(post, { id: post.id });
+    editedData = await models[`${model}`].upsert(data, { id: data.id });
 
     return res.status(200).json({
       message: 'Success!',
-      data: editedPost,
+      data: editedData,
     });
   } catch (error) {
     return res.status(500).json({

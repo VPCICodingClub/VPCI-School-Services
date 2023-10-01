@@ -1,18 +1,22 @@
 import { DateTime } from 'luxon';
-import template from './addEvent.html';
+import template from './editEvent.html';
 import internalApi from 'Lib/internalApi';
 
 export default {
     template,
-    props: ['clubId'],
     data() {
         return {
             event: {},
         }
     },
+    async created() {
+        const { data: events } = await internalApi.get('events', { query: this.$route.params.id });
+        this.event = events[0];
+        this.event.start = DateTime.fromISO(this.event.start).toISODate();
+        this.event.end = DateTime.fromISO(this.event.end).toISODate();
+    },
     methods: {
         async submit() {
-            this.event.ClubId = this.clubId;
             const start = DateTime.fromFormat(this.event.start, 'yyyy-MM-dd');
             const end = DateTime.fromFormat(this.event.end, 'yyyy-MM-dd');
 
@@ -22,10 +26,8 @@ export default {
                 end: end.toISO(),
             };
 
-            const addedEvent = await internalApi.put('update/events', { ...newEvent, clubId: this.clubId });
-            newEvent.url = `/#/event/${addedEvent.id}`;
-            this.$emit('eventAdded', newEvent);
-            this.event = {};
+            const addedEvent = await internalApi.put('update/events', { ...newEvent });
+            this.$router.go(-1);
         },
     }
 };

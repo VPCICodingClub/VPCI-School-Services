@@ -10,34 +10,46 @@ import interactionPlugin from '@fullcalendar/interaction';
 import internalApi from 'Lib/internalApi';
 
 export default {
-    template,
-    components: {
-      FullCalendar
+  template,
+  components: {
+    FullCalendar
+  },
+  props: {
+    editable: {
+      type: Boolean,
+      default: false,
     },
-    data() {
-      return {
-        options: {
-          plugins: [dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin],
-          initialView: 'dayGridMonth',
-          headerToolbar: {
-            left: 'prev,next today',
-            center: 'title',
-            right: 'dayGridMonth,timeGridWeek,timeGridDay',
-          },
-          editable: false,
-          selectable: true,
-          weekends: true,
-          events: [],
-        }
-      }
+    events: {
+      type: Array,
+      default: [],
     },
-    async created() {
-      await this.getEvents();
-    },
-    methods: {
-      async getEvents(startDate, endDate) {
-          const { data: events } = await internalApi.get('events', { startDate, endDate });
-          this.options.events = events;
+  },
+  data() {
+    return {
+      options: {
+        timeZone: 'local',
+        plugins: [dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin],
+        initialView: 'dayGridMonth',
+        headerToolbar: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'dayGridMonth,timeGridWeek,timeGridDay',
+        },
+        editable: this.editable,
+        selectable: true,
+        weekends: true,
+        events: [],
       }
     }
+  },
+  watch: {
+    'events.length'() {
+      this.options.events.length = 0;
+
+      this.events.forEach((event) => {
+        event.url = `/#/event/${event.id}/edit`;
+        this.options.events.push(event);
+      });
+    }
+  }
 };

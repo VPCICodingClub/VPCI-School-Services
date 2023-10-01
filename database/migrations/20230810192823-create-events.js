@@ -19,7 +19,7 @@ module.exports = {
       location: {
         type: Sequelize.TEXT
       },
-      url: {
+      link: {
         type: Sequelize.TEXT
       },
       start: {
