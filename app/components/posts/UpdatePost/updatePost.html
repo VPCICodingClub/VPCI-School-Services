@@ -10,5 +10,5 @@
         <button type="submit" class="fa-solid fa-arrow-right"></button>
     </form>
     <button v-if="!isNewPost" @click="deletePost">Delete</button>
-    <button v-if="!isNewPost" @click="swapComponent('post')" >Cancel</button>
+    <button v-if="!isNewPost" @click="$emit('cancel')" >Cancel</button>
 </div>

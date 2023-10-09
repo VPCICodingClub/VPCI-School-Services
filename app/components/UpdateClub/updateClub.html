@@ -60,14 +60,18 @@
         :clubId="club.id"
         :slug="club.slug"
         :post="{}"
-        :getPosts="getPosts"></update-post>
+        @post-added="getPosts()"
+        ></update-post>
 
     <div v-for="post in posts">
         <post-container
             :post="post"
             :clubName="club.name"
             :clubId="club.id"
-            :getPosts="getPosts"></post-container>
+            @post-submitted="getPosts()"
+            @post-deleted="getPosts()"
+            @editing-post="console.log('ey')">
+        </post-container>
     </div>
 </div>
 

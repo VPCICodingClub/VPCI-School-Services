@@ -2,6 +2,7 @@ import template from './updateClub.html';
 import { isAuthed, getUser, clearUser } from 'Lib/auth';
 import internalApi from 'Lib/internalApi';
 import UpdatePost from '../posts/UpdatePost';
+import Post from '../posts/Post';
 import PostContainer from '../posts/PostContainer';
 import ArrayInput from './ArrayInput';
 import Calendar from '../Calendar';
@@ -14,6 +15,7 @@ export default {
     components: {
         PostContainer,
         UpdatePost,
+        Post,
         ArrayInput,
         Calendar,
         AddEvent,
@@ -50,11 +52,9 @@ export default {
         async getPosts() { // Called when a post was edited or made.
             const { data: posts } = await internalApi.get('posts', { query: this.club.id });
             this.posts = posts;
+            console.log('updated');
 
             this.displayAddPostButton = true; // In case a new post was added, this will ensure the button is shown.
-        },
-        swapComponent: function(component) {
-          this.currentComponent = component;
         },
         submit() {
             (this.$route.name === 'editClub') ? this.editClub() : this.createClub();

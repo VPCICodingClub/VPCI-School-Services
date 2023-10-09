@@ -47,7 +47,6 @@ export default {
       this.options.events.length = 0;
 
       this.events.forEach((event) => {
-        console.log('watcher', event);
         event.url = `/#/event/${event.id}/edit`;
         this.options.events.push(event);
       });

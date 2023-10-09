@@ -4,7 +4,7 @@ import UpdatePost from '../UpdatePost';
 
 export default {
     template,
-    props: ['post', 'clubId', 'clubName', 'getPosts'],
+    props: ['post', 'clubId', 'clubName'],
     components: {
         'update-post': UpdatePost,
         'post': Post,
@@ -16,7 +16,7 @@ export default {
     },
     methods: {
         swapComponent: function(component) {
-          this.currentComponent = component;
+            this.currentComponent = component
         },
     }
 };

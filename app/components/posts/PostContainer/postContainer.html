@@ -3,8 +3,10 @@
     :post="post"
     :clubName="clubName"
     :clubId="clubId"
-    :swapComponent="swapComponent"
-    :getPosts="getPosts"
     :isNewPost="false"
-    style="border: solid 0.1rem red;"
-    ></component>
+    @editing-post="swapComponent('update-post')"
+    @post-submitted="swapComponent('post')"
+    @post-deleted="swapComponent('post')"
+    @cancel="swapComponent('post')"
+    style="border: solid 0.1rem red;">
+</component>

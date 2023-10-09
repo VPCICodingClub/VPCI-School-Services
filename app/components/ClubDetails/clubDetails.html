@@ -12,7 +12,7 @@
                         <div class="vertical-list">
                             Executives
                             <ul>
-                                <li v-for="leader in club.leaders">{{leader}}</li>
+                                <li v-for="exec in club.executives">{{exec}}</li>
                             </ul>
                         </div>
                         <div>
@@ -31,7 +31,7 @@
                     <div class="horizontal-list">
                         <div>Social Media(s)</div>
                         <ul>
-                            <li v-for="social in club.social">{{social}}</li>
+                            <li v-for="social in club.socialMedias">{{social}}</li>
                         </ul>
                     </div>
                 </div>
@@ -53,7 +53,7 @@
                     <div class="vertical-list">
                         <div>Social Media(s)</div>
                         <ul>
-                            <li v-for="social in club.social">{{social}}</li>
+                            <li v-for="social in club.socialMedias">{{social}}</li>
                         </ul>
                     </div>
                     <button class="join">Join</button>

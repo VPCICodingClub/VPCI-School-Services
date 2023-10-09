@@ -87,10 +87,11 @@ const routes = [{
             component: UpdateClub,
             beforeEnter: async (to, from) => {
                 const { data: clubs } = await internalApi.get('clubs/', { query: to.params.slug });
+                const { data: account } = await internalApi.get('accounts');
                 const clubId = clubs[0].id;
                 const user = getUser();
                 // console.log(user.clubs, clubId);
-                const clubBelongsToUser = user.clubs.some((club) => club === clubId);
+                const clubBelongsToUser = account.Clubs.some((club) => club.id === clubId);
 
                 if (!clubBelongsToUser) return { name: 'clubDetails', params: to.params };
             },
@@ -105,8 +106,9 @@ const routes = [{
             component: EditEvent,
             beforeEnter: async (to, from) => {
                 const { data: events } = await internalApi.get('events/', { id: to.params.id });
+                const { data: account } = await internalApi.get('accounts');
                 const user = getUser();
-                const eventBelongsToUser = user.clubs.some((club) => club === events[0].ClubId);
+                const eventBelongsToUser = account.Clubs.some((club) => club.id === events[0].ClubId);
 
                 if (!eventBelongsToUser) return { name: 'eventDetails', params: to.params };
             },
