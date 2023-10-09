@@ -13,6 +13,10 @@ import WashroomStatus from '../components/WashroomStatus';
 // The routes will be managed in this file
 // If there are too many, then the nested routes will be moved to other files within this folder.
 
+import internalApi from 'Lib/internalApi';
+
+import { isAuthed, getUser } from 'Lib/auth';
+
 const routes = [{
     name: 'washroomStatus',
     path: '/washroom-status', // ?id=1
@@ -40,16 +44,16 @@ const routes = [{
         },
         {
             name: 'clubDetails',
-            path: 'clubs/:id',
+            path: 'club/:slug',
             component: ClubDetails,
         },
         {
-            name: 'sign-in',
+            name: 'signIn',
             path: 'sign-in',
             component: SignIn,
         },
         {
-            name: 'sign-up',
+            name: 'signUp',
             path: 'sign-up',
             component: SignUp,
         },
@@ -57,25 +61,53 @@ const routes = [{
             name: 'dashboard',
             path: 'account',
             component: Dashboard,
-            meta: { requiresAuth: true },
+            meta: {
+                requiresAuth: true,
+                unauthRedirect: 'signIn',
+            },
         },
         {
             name: 'createClub',
             path: 'new-club',
             component: UpdateClub,
-            meta: { requiresAuth: true },
+            meta: {
+                requiresAuth: true,
+                unauthRedirect: 'signIn',
+            },
         },
         {
             name: 'editClub',
-            path: 'edit-club/:slug',
+            path: 'club/:slug/edit',
             component: UpdateClub,
-            meta: { requiresAuth: true },
+            beforeEnter: async (to, from) => {
+                const { data: clubs } = await internalApi.get('clubs/', { query: to.params.slug });
+                const clubId = clubs[0].id;
+                const user = getUser();
+                // console.log(user.clubs, clubId);
+                const clubBelongsToUser = user.clubs.some((club) => club === clubId);
+
+                if (!clubBelongsToUser) return { name: 'clubDetails', params: to.params };
+            },
+            meta: {
+                requiresAuth: true,
+                unauthRedirect: 'clubDetails',
+            },
         },
         {
             name: 'editEvent',
             path: 'event/:id/edit',
             component: EditEvent,
-            meta: { requiresAuth: true },
+            beforeEnter: async (to, from) => {
+                const { data: events } = await internalApi.get('events/', { id: to.params.id });
+                const user = getUser();
+                const eventBelongsToUser = user.clubs.some((club) => club === events[0].ClubId);
+
+                if (!eventBelongsToUser) return { name: 'eventDetails', params: to.params };
+            },
+            meta: {
+                requiresAuth: true,
+                unauthRedirect: 'eventDetails',
+            },
         },
         {
             name: 'eventDetails',

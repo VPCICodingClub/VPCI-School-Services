@@ -17,7 +17,6 @@ export default {
     },
     async created() {
         const { data: events } = await internalApi.get('events');
-        console.log(events);
         this.events = events;
     },
 };

@@ -6,6 +6,8 @@ import PostContainer from '../posts/PostContainer';
 import Calendar from '../Calendar';
 import AddEvent from '../events/AddEvent';
 
+import { updateToken } from 'Lib/auth';
+
 export default {
     template,
     components: {
@@ -38,7 +40,6 @@ export default {
             // console.log(this.club);
 
             this.getPosts();
-
             this.getEvents();
         }
     },
@@ -56,24 +57,14 @@ export default {
             (this.$route.name === 'editClub') ? this.editClub() : this.createClub();
         },
         async createClub() {
-            const { status, data: { message, data: club } } = await internalApi.post('clubs', { newClub: this.club });
+            const { status, data: { message, data: { newClub, token } } } = await internalApi.post('clubs', { newClub: this.club });
 
-            if (status === 500 || status === 400) {
-                alert(message);
-            } else {
-                alert(`${message} ${club.name} created!`);
-            }
+            updateToken(token);
 
             this.$router.push({ name: 'dashboard' });
         },
         async editClub() {
             const { status, data: { message, data: club } } = await internalApi.put(`clubs/${this.club.id}`, { editedClub: this.club });
-
-            if (status === 500 || status === 400) {
-                alert(message);
-            } else {
-                alert(`${message} ${club.name} edited!`);
-            }
 
             this.$router.push({ name: 'dashboard' });
         },
@@ -82,8 +73,8 @@ export default {
             alert(message);
             this.$router.push({ name: 'dashboard' });
         },
-        async getEvents(startDate, endDate) {
-            const { data: events } = await internalApi.get('events', { startDate, endDate });
+        async getEvents() {
+            const { data: events } = await internalApi.get('events', { ClubId: this.club.id });
             this.events = events;
         }
     }

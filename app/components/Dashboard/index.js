@@ -35,7 +35,7 @@ export default {
     methods: {
         logout() {
             clearUser();
-            this.$router.push({ name: 'sign-in' });
+            this.$router.push({ name: 'signIn' });
         },
         log() {
             console.log(this.executives);

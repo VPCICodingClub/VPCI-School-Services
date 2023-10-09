@@ -10,7 +10,7 @@ export default {
         }
     },
     async created() {
-        const { data: events } = await internalApi.get('events', { query: this.$route.params.id });
+        const { data: events } = await internalApi.get('events', { id: this.$route.params.id });
         this.event = events[0];
         this.event.start = DateTime.fromISO(this.event.start).toISODate();
         this.event.end = DateTime.fromISO(this.event.end).toISODate();

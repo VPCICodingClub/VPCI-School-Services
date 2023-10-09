@@ -4,7 +4,7 @@ import internalApi from 'Lib/internalApi';
 
 export default {
     template,
-    props: ['clubId'],
+    props: ['clubId', 'slug'],
     data() {
         return {
             event: {},
@@ -20,10 +20,11 @@ export default {
                 ...this.event,
                 start: start.toISO(),
                 end: end.toISO(),
+                id: null
             };
 
-            const addedEvent = await internalApi.put('update/events', { ...newEvent, clubId: this.clubId });
-            newEvent.url = `/#/event/${addedEvent.id}`;
+            const { status, data: { message, data: addedEvent } } = await internalApi.put('resource/events', { ...newEvent, ClubId: this.clubId });
+            newEvent.id = addedEvent[0].id;
             this.$emit('eventAdded', newEvent);
             this.event = {};
         },

@@ -3,12 +3,14 @@ import db from '../../database/models/index.js'; // The models are used in the a
 const { Events } = db;
 
 export default async (req, res) => {
-  const { query } = req.query;
+  const { id, ClubId } = req.query;
   let options = {};
   // console.log(typeof startDate);
 
-  if (query) //{
-    options.where = { id: query };
+  if (id) //{
+    options.where = { id };
+  if (ClubId)
+    options.where = { ClubId };
   // } else if (startDate && endDate && startDate != 'undefined' && endDate != 'undefined') {
   //   options.where = {
   //     from: {

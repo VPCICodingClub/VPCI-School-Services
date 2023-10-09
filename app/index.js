@@ -4,8 +4,9 @@ import './styles';
 import { createApp } from 'vue';
 import { createRouter, createWebHashHistory } from 'vue-router';
 import routes from './routes'; // All routes will be in this folder to keep things tidy.
+import internalApi from 'Lib/internalApi';
 
-import { isAuthed } from 'Lib/auth';
+import { isAuthed, isAuthorized } from 'Lib/auth';
 
 // The router is what allows you to go to different pages on the website.
 const router = createRouter({
@@ -15,10 +16,10 @@ const router = createRouter({
 
 
 router.beforeEach((to, from, next) => {
-  if (to.meta.requiresAuth) {
-    if (isAuthed()) return next();
-    return next('/sign-in');
+  if (to.meta.requiresAuth && !isAuthed()) {
+    return next({ name: to.meta.unauthRedirect, params: to.params });
   }
+
   return next();
 });
 
