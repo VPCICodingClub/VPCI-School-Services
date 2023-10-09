@@ -13,9 +13,11 @@ export default async (req, res, next) => {
   const [authType, token] = authHeader.split(' ');
 
   try {
+
     const data = jwt.verify(token, secrets.jwtSecret);
     req.user = data;
     return next();
+
   } catch (err) {
     return res.status(401).json({
       message: 'Unauthorized',

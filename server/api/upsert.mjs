@@ -9,11 +9,9 @@ const models = {
 }
 
 export default async (req, res) => {
-  const data = req.body;
   const { model } = req.params;
+  const data = req.body;
   let editedData = {};
-
-  console.log('inside upsert =====')
 
   if (!data.title) {
     return res.status(400).json({
@@ -38,29 +36,19 @@ export default async (req, res) => {
       });
     }
 
-    const accounts = await club.getAccounts();
-
-    let authorized = false;
-    for (let i = 0; i < accounts.length; i++) {
-      if (req.user.id === accounts[i].id) authorized = true;
-    }
-
-    if (authorized) {
-      // let where = {};
-      // console.log(data.id, data.id !== null, typeof data.id)
-      // if (data.id !== null) where = { id: data.id };
-      editedData = await models[`${model}`].upsert(data, { id: data.id });
-
-      return res.status(200).json({
-        message: 'Success!',
-        data: editedData
-      });
-    } else {
+    if (!req.user.clubs.some((clubId) => clubId === data.ClubId)) {
       return res.status(401).json({
         message: 'Your account does not belong to this club.',
         data: {},
       });
     }
+
+    editedData = await models[`${model}`].upsert(data, { id: data.id });
+
+    return res.status(200).json({
+      message: 'Success!',
+      data: editedData
+    });
   } catch (error) {
     return res.status(500).json({
       message: 'An error occurred.',

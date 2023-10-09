@@ -16,8 +16,14 @@ export default async (req, res) => {
       });
     }
 
+    if (!req.user.clubs.some((clubId) => clubId === club.id)) {
+      return res.status(401).json({
+        message: 'Your account does not belong to this club.',
+        data: {},
+      });
+    }
+
     await club.destroy();
-    console.log(club);
 
     return res.status(200).json({
       message: 'Success!',
