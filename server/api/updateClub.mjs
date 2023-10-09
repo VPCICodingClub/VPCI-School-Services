@@ -26,7 +26,7 @@ export default async (req, res) => {
     });
   }
 
-  if (!req.user.clubs.some((club) => club === clubId)) {
+  if (!req.user.clubs.some((club) => club.id == clubId)) {
     return res.status(401).json({
       message: 'Your account does not belong to this club.',
       data: {},

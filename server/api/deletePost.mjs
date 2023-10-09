@@ -1,32 +1,35 @@
-import db from '../../database/models/index.js'; // The models are used in the api.
+import db from '../../database/models/index.js';
 
-// Import only the Clubs model from the database.
-const { sequelize, Clubs, Accounts } = db;
+const { Posts } = db;
 
 export default async (req, res) => {
-  const { clubId } = req.params;
+  const { postId } = req.params;
 
   try {
-    const club = await Clubs.findByPk(clubId);
 
-    if (!club) {
+    const post = await Posts.findByPk(postId);
+
+    if (!post) {
       return res.status(404).json({
-        message: 'Club does not exist',
+        message: 'This post does not exist.',
         data: {},
       });
     }
 
-    if (!req.user.clubs.some((userClubId) => userClubId === club.id)) {
+    const club = await post.getClub();
+    const clubId = club.id;
+
+    if (!req.user.clubs.some((club) => club.id === clubId)) {
       return res.status(401).json({
         message: 'Your account does not belong to this club.',
         data: {},
       });
     }
 
-    await club.destroy();
+    await post.destroy();
 
     return res.status(200).json({
-      message: 'Success!',
+      message: `Success! Post ${post.id} was deleted.`,
       data: {},
     });
 

@@ -1,5 +1,8 @@
 import jwt from 'jsonwebtoken';
 import secrets from '../../config/secrets.json' assert { type: 'json' };
+import db from '../../database/models/index.js';
+
+const { Accounts } = db;
 
 export default async (req, res, next) => {
   const authHeader = req.headers.authorization;
@@ -15,6 +18,9 @@ export default async (req, res, next) => {
   try {
 
     const data = jwt.verify(token, secrets.jwtSecret);
+    const account = await Accounts.findByPk(data.id);
+    data.clubs = await account.getClubs();
+
     req.user = data;
     return next();
 

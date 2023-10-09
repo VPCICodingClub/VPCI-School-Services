@@ -23,8 +23,8 @@ export default {
                 id: null
             };
 
-            const { status, data: { message, data: addedEvent } } = await internalApi.put('resource/events', { ...newEvent, ClubId: this.clubId });
-            newEvent.id = addedEvent[0].id;
+            const { status, data: { message, data: addedEvent } } = await internalApi.post('events', { newEvent: { ...newEvent, ClubId: this.clubId }});
+            newEvent.id = addedEvent.id;
             this.$emit('eventAdded', newEvent);
             this.event = {};
         },

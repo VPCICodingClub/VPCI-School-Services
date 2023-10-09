@@ -15,10 +15,18 @@ import register from './authentication/register.mjs';
 import login from './authentication/login.mjs';
 import getAccountData from './getAccountData.mjs';
 
-import getPosts from './getPosts.mjs';
 import getEvents from './getEvents.mjs';
-import upsert from './upsert.mjs'
-import del from './delete.mjs';
+import addEvent from './addEvent.mjs';
+import updateEvent from './updateEvent.mjs';
+import deleteEvent from './deleteEvent.mjs';
+
+import getPosts from './getPosts.mjs';
+import addPost from './addPost.mjs';
+import updatePost from './updatePost.mjs';
+import deletePost from './deletePost.mjs';
+
+// import upsert from './upsert.mjs'
+// import del from './delete.mjs';
 
 // https://expressjs.com/en/guide/routing.html (scroll down for express.Router)
 const router = express.Router();
@@ -31,7 +39,7 @@ const apiPath = '/api/v1';
 router.get(apiPath + '/clubs', getClubs);
 router.post(apiPath + '/clubs', authorize, addClub);
 router.put(apiPath + '/clubs/:clubId', authorize, updateClub);
-router.delete(apiPath + '/clubs/:clubId', authorize, deleteClub);
+router.delete(apiPath + '/clubs/:clubId(\\d+)', authorize, deleteClub);
 
 router.get(apiPath + '/washrooms', getWashroomStatus);
 router.post(apiPath + '/washroom-status', updateWashroomStatus);
@@ -41,8 +49,16 @@ router.post(apiPath + '/login', login);
 router.get(apiPath + '/accounts', authorize, getAccountData);
 
 router.get(apiPath + '/events', getEvents);
+router.post(apiPath + '/events', authorize, addEvent);
+router.put(apiPath + '/events/:eventId', authorize, updateEvent);
+router.delete(apiPath + '/events/:eventId', authorize, deleteEvent);
+
 router.get(apiPath + '/posts', getPosts);
-router.put(apiPath + '/resource/:model', authorize, upsert);
-router.delete(apiPath + '/resource/:model/:id', authorize, del);
+router.post(apiPath + '/posts', authorize, addPost);
+router.put(apiPath + '/posts/:postId', authorize, updatePost);
+router.delete(apiPath + '/posts/:postId', authorize, deletePost);
+
+// router.put(apiPath + '/resource/:model', authorize, upsert);
+// router.delete(apiPath + '/resource/:model/:id', authorize, del);
 
 export default router;

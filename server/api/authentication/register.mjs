@@ -37,7 +37,7 @@ export default async (req, res) => {
     const token = jwt.sign({
       id: user.id,
       username,
-      clubs: [],
+      // clubs: [],
     }, secrets.jwtSecret, { expiresIn });
 
     return res.status(200).json ({

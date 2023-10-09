@@ -16,13 +16,13 @@ export default async (req, res) => {
 
   try {
     const user = await Accounts.findOne({ where: { username } });
-    const clubs = await user.getClubs({ attributes: ['id'] });
-    // console.log(clubs);
-    const clubIds = [];
-    for (let i = 0; i < clubs.length; i++) {
-      clubIds.push(clubs[i].id);
-    }
-    // console.log(clubIds);
+    // const clubs = await user.getClubs({ attributes: ['id'] });
+    // // console.log(clubs);
+    // const clubIds = [];
+    // for (let i = 0; i < clubs.length; i++) {
+    //   clubIds.push(clubs[i].id);
+    // }
+    // // console.log(clubIds);
 
     if (!user) {
       return res.status(400).json({
@@ -38,7 +38,7 @@ export default async (req, res) => {
       const token = jwt.sign({
         id: user.id,
         username,
-        clubs: clubIds,
+        // clubs: clubIds,
       }, secrets.jwtSecret, { expiresIn: maxAge, });
 
       return res.status(200).json({

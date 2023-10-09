@@ -3,14 +3,11 @@ import { isAuthed, getUser, clearUser } from 'Lib/auth';
 import internalApi from 'Lib/internalApi';
 import UpdatePost from '../posts/UpdatePost';
 import PostContainer from '../posts/PostContainer';
-<<<<<<< HEAD
 import ArrayInput from './ArrayInput';
-=======
 import Calendar from '../Calendar';
 import AddEvent from '../events/AddEvent';
 
 import { updateToken } from 'Lib/auth';
->>>>>>> events
 
 export default {
     template,
@@ -63,15 +60,11 @@ export default {
             (this.$route.name === 'editClub') ? this.editClub() : this.createClub();
         },
         async createClub() {
-            const { status, data: { message, data: { newClub, token } } } = await internalApi.post('clubs', { newClub: this.club });
-
-            updateToken(token);
-
+            const { status, data: { message, data: newClub } } = await internalApi.post('clubs', { newClub: this.club });
             this.$router.push({ name: 'dashboard' });
         },
         async editClub() {
             const { status, data: { message, data: club } } = await internalApi.put(`clubs/${this.club.id}`, { editedClub: this.club });
-
             this.$router.push({ name: 'dashboard' });
         },
         async deleteClub() {

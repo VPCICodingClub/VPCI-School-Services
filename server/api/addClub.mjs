@@ -42,7 +42,6 @@ export default async (req, res) => {
     });
   }
 
-
   newClub.executives = newClub.executives.filter(removeEmptyString);
   newClub.supervisors = newClub.supervisors.filter(removeEmptyString);
   newClub.socialMedias = newClub.socialMedias.filter(removeEmptyString);
@@ -58,16 +57,10 @@ export default async (req, res) => {
       req.user.clubs.push(club.id);
     });
 
-    const maxAge = 3 * 60 * 60; // 3 hours
-    const token = jwt.sign({
-      id: req.user.id,
-      username: req.user.username,
-      clubs: req.user.clubs,
-    }, secrets.jwtSecret, { expiresIn: maxAge, });
 
     return res.status(200).json({
       message: 'Success!',
-      data: { newClub, token },
+      data: newClub,
     });
 
   } catch (error) {

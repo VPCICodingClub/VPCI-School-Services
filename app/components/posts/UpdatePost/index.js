@@ -16,15 +16,13 @@ export default {
     // },
     methods: {
         async submit() {
-            this.editedPost.ClubId = this.clubId;
+            // this.editedPost.ClubId = this.clubId;
             // console.log(this.editedPost);
             if (!this.editedPost.title) { return; }
-            const { status, data: { message, data: post } } = await internalApi.put('resource/posts', { ...this.editedPost, ClubId: this.clubId });
-
-            if (status === 500 || status === 400) {
-                alert(message);
+            if (!this.isNewPost) {
+                const { status, data: { message, data: post } } = await internalApi.put(`posts/${this.editedPost.id}`, { editedPost: { ...this.editedPost, ClubId: this.clubId }});
             } else {
-                alert(`${message} ${post.title} exists!`);
+                const { status, data: { message, data: post } } = await internalApi.post('posts/', { newPost: { ...this.editedPost, ClubId: this.clubId } });
             }
 
             if (!this.isNewPost) {
@@ -37,7 +35,7 @@ export default {
         },
         async deletePost() { // Only available when the post is being edited.
             console.log(this.editedPost.id);
-            const { data: { message } } = await internalApi.delete(`resource/posts/${this.editedPost.id}`);
+            const { data: { message } } = await internalApi.delete(`posts/${this.editedPost.id}`);
             alert(message);
 
             this.swapComponent('post');

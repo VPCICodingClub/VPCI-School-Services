@@ -1,44 +1,47 @@
 import db from '../../database/models/index.js';
 
-const { sequelize, Posts, Events, Clubs } = db;
-
-// The allowed models.
-const models = {
-  events: Events,
-  posts: Posts,
-}
+const { Clubs, Events } = db;
 
 export default async (req, res) => {
-  const { model, id } = req.params;
+  const { newEvent } = req.body;
+
+  if (!newEvent.ClubId) {
+    return res.status(400).json({
+      message: 'Events must have a ClubId.',
+      data: {},
+    });
+  }
 
   try {
-    const data = await models[model].findByPk(id);
+    const club = await Clubs.findByPk(newEvent.ClubId);
+    const clubId = club.id;
 
-    if (!data) {
+    if (!club) {
       return res.status(404).json({
-        message: `${model} does not exist`,
+        message: 'Invalid ClubId. Club not found.',
         data: {},
       });
     }
 
-    if (!req.user.clubs.some((clubId) => clubId === data.ClubId)) {
+    if (!req.user.clubs.some((club) => club.id === clubId)) {
       return res.status(401).json({
         message: 'Your account does not belong to this club.',
         data: {},
       });
     }
 
-    await data.destroy();
+    const event = await Events.create(newEvent);
 
     return res.status(200).json({
       message: 'Success!',
-      data: {},
+      data: event,
     });
 
   } catch (error) {
     return res.status(500).json({
       message: 'An error occurred.',
       error: error.message,
+      data: {},
     });
   }
 };

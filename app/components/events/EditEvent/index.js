@@ -24,20 +24,18 @@ export default {
             const start = DateTime.fromFormat(this.event.start, 'yyyy-MM-dd');
             const end = DateTime.fromFormat(this.event.end, 'yyyy-MM-dd');
 
-            const newEvent = {
+            const event = {
                 ...this.event,
                 start: start.toISO(),
                 end: end.toISO(),
             };
 
-            console.log('here in upsert');
-
-            const addedEvent = await internalApi.put('resource/events', { ...newEvent });
+            const addedEvent = await internalApi.put(`events/${this.event.id}`, { editedEvent: event });
             this.$router.go(-1);
         },
         async deleteEvent() {
             // console.log(this.event.id);
-            const { data: { message } } = await internalApi.delete(`resource/events/${this.event.id}`);
+            const { data: { message } } = await internalApi.delete(`events/${this.event.id}`);
             alert(message);
             this.$router.push({ name: 'dashboard'});
         },

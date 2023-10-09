@@ -23,9 +23,9 @@ module.exports = (sequelize, DataTypes) => {
     slug: { type: DataTypes.TEXT, allowNull: false },
     supervisors: DataTypes.ARRAY(DataTypes.TEXT),
     executives: DataTypes.ARRAY(DataTypes.TEXT),
-    // schedule: DataTypes.TEXT,
-    meetDays: DataTypes.ARRAY(DataTypes.ENUM),
-    meetTime: DataTypes.TIME,
+    schedule: DataTypes.TEXT,
+    // meetDays: DataTypes.ARRAY(DataTypes.ENUM),
+    // meetTime: DataTypes.TIME,
     socialMedias: DataTypes.ARRAY(DataTypes.TEXT),
     joinLink: DataTypes.TEXT,
   }, {

@@ -19,10 +19,11 @@
     </div>
     <div>
         <label>Schedule</label>
-        <select v-model="club.meetDays" multiple>
+        <input type="text" autocomplete="off" placeholder="schedule" v-model="club.schedule">
+<!--         <select v-model="club.meetDays" multiple>
             <option v-for="day in daysOfWeek" value="day">{{day}}</option>
         </select>
-        <input type="time" v-model="club.meetTime" min="07:00" max="20:00" />
+        <input type="time" v-model="club.meetTime" min="07:00" max="20:00" /> -->
     </div>
     <array-input
         :array="club.executives"
