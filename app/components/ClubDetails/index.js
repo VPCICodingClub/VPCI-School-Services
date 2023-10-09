@@ -17,14 +17,14 @@ export default {
         }
     },
     beforeRouteUpdate(to) {
-        this.getClub(to.params.id);
+        this.getClub(to.params.slug);
     },
     created() {
-        this.getClub(this.$route.params.id);
+        this.getClub(this.$route.params.slug);
     },
     methods: {
-        async getClub(id) {
-            const { data: clubs } = await internalApi.get('clubs', { query: id });
+        async getClub(slug) {
+            const { data: clubs } = await internalApi.get('clubs', { query: slug });
             this.club = clubs[0];
             const { data: posts } = await internalApi.get('posts', { query: this.club.id });
             this.posts = posts;

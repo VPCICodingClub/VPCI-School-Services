@@ -40,10 +40,19 @@ function clearUser() {
     localStorage.removeItem(tokenKey);
 }
 
+async function isAuthorized(clubId) {
+    const user = getUser();
+    for (let i = 0; i < user.clubs.length; i++) {
+        if (clubId === user.clubs[i].id) return true;
+    }
+    return false;
+}
+
 export {
     getToken,
     getUser,
     isAuthed,
     updateToken,
-    clearUser
+    clearUser,
+    isAuthorized
 };

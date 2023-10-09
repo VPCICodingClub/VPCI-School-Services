@@ -1,7 +1,7 @@
 import template from './dashboard.html';
-import './dashboard.css'
 import { isAuthed, getUser, clearUser } from 'Lib/auth';
 import internalApi from 'Lib/internalApi';
+import './dashboard.css';
 
 export default {
     template,
@@ -35,7 +35,7 @@ export default {
     methods: {
         logout() {
             clearUser();
-            this.$router.push({ name: 'sign-in' });
+            this.$router.push({ name: 'signIn' });
         },
         log() {
             console.log(this.executives);

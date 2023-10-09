@@ -26,6 +26,13 @@ export default async (req, res) => {
     });
   }
 
+  if (!req.user.clubs.some((club) => club === clubId)) {
+    return res.status(401).json({
+      message: 'Your account does not belong to this club.',
+      data: {},
+    });
+  }
+
   editedClub.executives = editedClub.executives.filter(removeEmptyString);
   editedClub.supervisors = editedClub.supervisors.filter(removeEmptyString);
   editedClub.socialMedias = editedClub.socialMedias.filter(removeEmptyString);

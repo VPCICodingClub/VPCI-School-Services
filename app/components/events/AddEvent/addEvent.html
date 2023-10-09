@@ -1,0 +1,9 @@
+<div>Enter Event information</div>
+<form @submit.prevent="submit">
+    <input type="text" autocomplete="off" placeholder="Title" v-model="event.title">
+    <label>Start</label>
+    <input type="date" autocomplete="off" v-model="event.start">
+    <label>End</label>
+    <input type="date" autocomplete="off" v-model="event.end">
+    <button>Submit</button>
+</form>

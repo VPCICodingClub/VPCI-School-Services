@@ -1,4 +1,6 @@
 import db from '../../database/models/index.js'; // The models are used in the api.
+import jwt from 'jsonwebtoken';
+import secrets from '../../config/secrets.json' assert { type: 'json' };
 
 // Import only the Clubs model from the database.
 const { sequelize, Sequelize, Clubs, Accounts } = db;
@@ -9,6 +11,8 @@ function removeEmptyString(el){
 
 export default async (req, res) => {
   const { newClub } = req.body;
+
+  console.log(req.user);
 
   if (!newClub.name) {
     return res.status(400).json({
@@ -51,11 +55,19 @@ export default async (req, res) => {
         transaction,
       });
       await user.addClub(club, {transaction});
+      req.user.clubs.push(club.id);
     });
+
+    const maxAge = 3 * 60 * 60; // 3 hours
+    const token = jwt.sign({
+      id: req.user.id,
+      username: req.user.username,
+      clubs: req.user.clubs,
+    }, secrets.jwtSecret, { expiresIn: maxAge, });
 
     return res.status(200).json({
       message: 'Success!',
-      data: newClub,
+      data: { newClub, token },
     });
 
   } catch (error) {

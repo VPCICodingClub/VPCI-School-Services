@@ -1,29 +1,34 @@
-import db from '../../database/models/index.js'; // The models are used in the api.
+import db from '../../database/models/index.js';
 
-// Import only the Clubs model from the database.
-const { sequelize, Clubs, Accounts } = db;
+const { sequelize, Posts, Events, Clubs } = db;
+
+// The allowed models.
+const models = {
+  events: Events,
+  posts: Posts,
+}
 
 export default async (req, res) => {
-  const { clubId } = req.params;
+  const { model, id } = req.params;
 
   try {
-    const club = await Clubs.findByPk(clubId);
+    const data = await models[model].findByPk(id);
 
-    if (!club) {
+    if (!data) {
       return res.status(404).json({
-        message: 'Club does not exist',
+        message: `${model} does not exist`,
         data: {},
       });
     }
 
-    if (!req.user.clubs.some((clubId) => clubId === club.id)) {
+    if (!req.user.clubs.some((clubId) => clubId === data.ClubId)) {
       return res.status(401).json({
         message: 'Your account does not belong to this club.',
         data: {},
       });
     }
 
-    await club.destroy();
+    await data.destroy();
 
     return res.status(200).json({
       message: 'Success!',

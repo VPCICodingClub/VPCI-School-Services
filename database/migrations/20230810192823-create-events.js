@@ -10,6 +10,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       title: {
+        allowNull: false,
         type: Sequelize.TEXT
       },
       description: {
@@ -17,6 +18,26 @@ module.exports = {
       },
       location: {
         type: Sequelize.TEXT
+      },
+      link: {
+        type: Sequelize.TEXT
+      },
+      start: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      end: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      ClubId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'Clubs',
+          key: 'id'
+        }
       },
       createdAt: {
         allowNull: false,

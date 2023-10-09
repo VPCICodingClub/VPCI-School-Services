@@ -45,23 +45,33 @@
     </div> -->
 </form>
 
-<h3>Posts</h3>
-{{posts}}
-<br>
-<button @click="displayAddPostButton = false" v-if="displayAddPostButton" >New Post</button>
-<update-post v-if="!displayAddPostButton"
-    :isNewPost="true"
-    :clubId="club.id"
-    :post="{}"
-    :getPosts="getPosts"></update-post>
-
-<div v-for="post in posts">
-    <post-container
-        :post="post"
-        :clubName="club.name"
-        :clubId="club.id"
-        :getPosts="getPosts"></post-container>
+<div v-if="this.$route.name === 'editClub'">
+    <button @click="deleteClub">Delete Club</button>
 </div>
 
-<br>
-<button v-if="this.$route.name === 'editClub'" @click="deleteClub">Delete Club</button>
+<div v-if="club.id">
+    <h3>Posts</h3>
+    {{posts}}
+    <br>
+    <button @click="displayAddPostButton = false" v-if="displayAddPostButton" >New Post</button>
+    <update-post v-if="!displayAddPostButton"
+        :isNewPost="true"
+        :clubId="club.id"
+        :slug="club.slug"
+        :post="{}"
+        :getPosts="getPosts"></update-post>
+
+    <div v-for="post in posts">
+        <post-container
+            :post="post"
+            :clubName="club.name"
+            :clubId="club.id"
+            :getPosts="getPosts"></post-container>
+    </div>
+</div>
+
+<div v-if="club.id">
+    <h3>Events</h3>
+    <AddEvent :clubId="club.id" @event-added="(newEvent) => events.push(newEvent)" />
+    <Calendar :events="events" />
+</div>

@@ -1,0 +1,15 @@
+<div style="height: 100px;"></div>
+<div>Edit Event information</div>
+<div>{{event.id}}</div>
+<form @submit.prevent="submit">
+    <input type="text" autocomplete="off" placeholder="Title" v-model="event.title">
+    <input type="text" autocomplete="off" placeholder="description" v-model="event.description">
+    <input type="text" autocomplete="off" placeholder="location" v-model="event.location">
+    <input type="url" autocomplete="off" placeholder="www.example.com" v-model="event.link">
+    <label>Start</label>
+    <input type="date" autocomplete="off" v-model="event.start">
+    <label>End</label>
+    <input type="date" autocomplete="off" v-model="event.end">
+    <button type="submit">Submit</button>
+</form>
+<button @click="deleteEvent">Delete</button>
