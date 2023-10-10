@@ -7,13 +7,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower:wght@100;200;300;400;500;1000&display=swap');
 /* Variables!! */
 :root {
-    --white: #F7F0F5;
-    --lightGrey: #eaecee;
-    --darkGrey: #223843;
-    --black: #0B2027;
+    --white: #fff;
+    --lightGrey: #f2f2f2;
+    --darkGrey: #ccc;
+    --black: #000;
 
     --primary: #B71D2C;
     --secondary: #F4D35E;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
 body {
@@ -30,9 +34,10 @@ html {
     font-size: 62.5%;
 }
 
-/*section {
-    margin-top: 120px; /* Change later ;-;
-}*/
+section {
+    margin: 120px auto 0; /* Change later ;-; */
+    width: 1280px;
+}
 
 h1 {
     margin: 0;

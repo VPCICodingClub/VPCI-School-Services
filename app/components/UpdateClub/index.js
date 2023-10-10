@@ -10,6 +10,8 @@ import AddEvent from '../events/AddEvent';
 
 import { updateToken } from 'Lib/auth';
 
+import './updateClub.css';
+
 export default {
     template,
     components: {
@@ -37,12 +39,11 @@ export default {
     },
     async created() {
         if (this.$route.name === 'editClub') {
-            this.title = `Editing ${this.club.name} Info`
 
             const slug = this.$route.params.slug;
             const { data: clubs } = await internalApi.get('clubs', { query: slug });
             this.club = clubs[0];
-            // console.log(this.club);
+            this.title = `Editing ${this.club.name} Info`
 
             this.getPosts();
             this.getEvents();

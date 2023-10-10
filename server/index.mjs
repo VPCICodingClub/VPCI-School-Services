@@ -17,11 +17,13 @@ const compiler = webpack(config);
 // === For dev only === //
 // Tell express to use the webpack-dev-middleware and use the webpack.config.js
 // configuration file as a base.
-app.use(webpackDevMiddleware(compiler, {
-  publicPath: config.output.publicPath,
-}));
-// Tell express to serve the static files in the build folder which were created by webpack.
-app.use(express.static(new URL('../build', import.meta.url).pathname));
+if (process.env.NODE_ENV === 'development') {
+  app.use(webpackDevMiddleware(compiler, {
+    publicPath: config.output.publicPath,
+  }));
+  // Tell express to serve the static files in the build folder which were created by webpack.
+  app.use(express.static(new URL('../build', import.meta.url).pathname));
+}
 // These files need to be compiled through the command line with `npm run build`, then you can start the server.
 // ==================== //
 

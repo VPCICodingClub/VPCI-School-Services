@@ -1,82 +1,87 @@
-<h2>{{title}}</h2>
-<br><br><br>
-<form @submit.prevent="submit">
+<section>
+    <h2>{{title}}</h2>
     <div>
-        <label>Name</label>
-        <input type="text" autocomplete="off" placeholder="name" v-model="club.name">
-    </div>
-    <div>
-        <label>URL Slug</label>
-        <input type="text" autocomplete="off" placeholder="name" v-model="club.slug">
-    </div>
-    <div>
-        <label>Image Link</label>
-        <input type="url" autocomplete="off" placeholder="www.example.com" v-model="club.logoLink">
-    </div>
-    <div>
-        <label>Description</label>
-        <input type="text" autocomplete="off" placeholder="description" v-model="club.description">
-    </div>
-    <div>
-        <label>Schedule</label>
-        <input type="text" autocomplete="off" placeholder="schedule" v-model="club.schedule">
-<!--         <select v-model="club.meetDays" multiple>
-            <option v-for="day in daysOfWeek" value="day">{{day}}</option>
-        </select>
-        <input type="time" v-model="club.meetTime" min="07:00" max="20:00" /> -->
-    </div>
-    <array-input
-        :array="club.executives"
-        :title="'Executive(s)'"
-        :placeholder="'Exec name'" />
-    <array-input
-        :array="club.supervisors"
-        :title="'Supervisor(s)'"
-        :placeholder="'Supervisor name'" />
-    <array-input
-        :array="club.socialMedias"
-        :title="'Social Media(s)'"
-        :placeholder="'Social media username'" />
-    <button type="submit">Submit</button>
-    {{club}}
+        <form @submit.prevent="submit" class="page-form">
+            <div class="flex-group">
+                <div class="flex-group__item">
+                    <div class="input-field">
+                        <label for="club-name" class="required">Name</label>
+                        <input id="club-name" name="club-name" type="text" autocomplete="off" placeholder="name" v-model="club.name" required>
+                    </div>
+                </div>
+                <div class="flex-group__item">
+                    <div class="input-field">
+                        <label for="url-slug" class="required">URL Slug</label>
+                        <input id="url-slug" name="url-slug" type="text" autocomplete="off" placeholder="name" v-model="club.slug" required>
+                    </div>
+                </div>
+            </div>
+            <div class="input-field">
+                <label for="image-link">Image Link</label>
+                <input id="image-link" name="image-link" type="url" autocomplete="off" placeholder="www.example.com" v-model="club.logoLink">
+            </div>
+            <div class="input-field">
+                <label>Description</label>
+                <textarea rows="5" v-model="club.description"></textarea>
+            </div>
+            <div class="input-field">
+                <label>Schedule</label>
+                <input type="text" autocomplete="off" placeholder="schedule" v-model="club.schedule">
+        <!--         <select v-model="club.meetDays" multiple>
+                    <option v-for="day in daysOfWeek" value="day">{{day}}</option>
+                </select>
+                <input type="time" v-model="club.meetTime" min="07:00" max="20:00" /> -->
+            </div>
+            <array-input
+                :array="club.executives"
+                :title="'Executive(s)'"
+                :placeholder="'Exec name'" />
+            <array-input
+                :array="club.supervisors"
+                :title="'Supervisor(s)'"
+                :placeholder="'Supervisor name'" />
+            <array-input
+                :array="club.socialMedias"
+                :title="'Social Media(s)'"
+                :placeholder="'Social media username'" />
+            <button type="submit">Submit</button>
+        <!--     <div>
+                <label>Join Link</label>
+                <input type="url" autocomplete="off" placeholder="www.example.com" v-model="joinLink">
+            </div> -->
+        </form>
 
-<!--     <div>
-        <label>Join Link</label>
-        <input type="url" autocomplete="off" placeholder="www.example.com" v-model="joinLink">
-    </div> -->
-</form>
+        <div v-if="this.$route.name === 'editClub'">
+            <button @click="deleteClub">Delete Club</button>
+        </div>
+    </div>
 
-<div v-if="this.$route.name === 'editClub'">
-    <button @click="deleteClub">Delete Club</button>
-</div>
-
-<div v-if="club.id">
-    <h3>Posts</h3>
-    {{posts}}
-    <br>
-    <button @click="displayAddPostButton = false" v-if="displayAddPostButton" >New Post</button>
-    <update-post v-if="!displayAddPostButton"
-        :isNewPost="true"
-        :clubId="club.id"
-        :slug="club.slug"
-        :post="{}"
-        @post-added="getPosts()"
-        ></update-post>
-
-    <div v-for="post in posts">
-        <post-container
-            :post="post"
-            :clubName="club.name"
+    <div v-if="club.id">
+        <h3>Posts</h3>
+        <button @click="displayAddPostButton = false" v-if="displayAddPostButton" >New Post</button>
+        <update-post v-if="!displayAddPostButton"
+            :isNewPost="true"
             :clubId="club.id"
-            @post-submitted="getPosts()"
-            @post-deleted="getPosts()"
-            @editing-post="console.log('ey')">
-        </post-container>
-    </div>
-</div>
+            :slug="club.slug"
+            :post="{}"
+            @post-added="getPosts()"
+            ></update-post>
 
-<div v-if="club.id">
-    <h3>Events</h3>
-    <AddEvent :clubId="club.id" @event-added="(newEvent) => events.push(newEvent)" />
-    <Calendar :events="events" />
-</div>
+        <div v-for="post in posts">
+            <post-container
+                :post="post"
+                :clubName="club.name"
+                :clubId="club.id"
+                @post-submitted="getPosts()"
+                @post-deleted="getPosts()"
+                @editing-post="console.log('ey')">
+            </post-container>
+        </div>
+    </div>
+
+    <div v-if="club.id">
+        <h3>Events</h3>
+        <AddEvent :clubId="club.id" @event-added="(newEvent) => events.push(newEvent)" />
+        <Calendar :events="events" />
+    </div>
+</section>

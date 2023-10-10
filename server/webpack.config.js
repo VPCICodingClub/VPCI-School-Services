@@ -2,9 +2,10 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {VueLoaderPlugin} = require("vue-loader"); // Needed otherwise the page says 'Cannot GET /'
+const mode = process.env.NODE_ENV || 'development';
 
 module.exports = {
-    mode: 'development',
+    mode,
     entry: './app/index.js', // The entry for the front end.
     resolve: {
         alias: {

@@ -1,0 +1,41 @@
+.page-form {
+    max-width: 700px;
+    margin: auto;
+}
+
+.input-field {
+    padding: 0.5rem 0;
+}
+
+.input-field > label,
+.array-field > label {
+    display: block;
+    color: #4b4b4b;
+    font-weight: 300;
+    margin-bottom: 0.2rem;
+    font-family: inherit;
+}
+
+.input-field input:focus {
+    outline: none;
+    border-color: #2a7dff;
+}
+
+.array-field {
+    font-family: 'Roboto';
+    margin: 0.5rem;
+}
+
+.array-field > div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0.5rem;
+}
+
+.array-field > div > input {
+    width: 20rem;
+}
+.array-field > div > a {
+    margin-left: 1rem;
+}

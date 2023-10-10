@@ -1,8 +1,8 @@
-<div>
-    <label>{{title}}</label>
+<div class="array-field">
+    <label style="margin: auto;">{{title}}</label>
     <div v-for="(item, i) in array">
         <input type="text" autocomplete="off" :placeholder="placeholder" v-model="array[i]">
-        <button type="button" @click="array.splice(i, 1);">Remove</button>
+        <a @click="array.splice(i, 1);" class="fa-solid fa-trash"></a>
     </div>
 
     <button type="button" @click="array.push('')">Add</button>

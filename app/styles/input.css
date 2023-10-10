@@ -1,0 +1,40 @@
+label {
+    display: block;
+    color: #4b4b4b;
+    font-weight: 300;
+    margin-bottom: 0.2rem;
+    font-family: inherit;
+}
+
+label.required:after {
+    content: '*';
+    color: red;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="password"],
+input[type="email"],
+input[type="date"],
+input[type="url"],
+textarea {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1.6rem;
+    border-radius: 0.4rem;
+    border: solid var(--darkGrey) 1px;
+    font-family: inherit;
+    transition: 100ms box-shadow, 100ms border;
+}
+
+textarea {
+    resize: vertical;
+    transition: 100ms box-shadow, 100ms border;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: #2a7dff;
+    box-shadow: 0 0 0.3rem #2a7dff;
+}
