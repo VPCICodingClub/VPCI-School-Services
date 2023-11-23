@@ -1,8 +1,18 @@
 <div class="welcome">
     <div style="height: 5rem;"></div>
-    <div>Welcome</div>
+    <div><strong>WELCOME</strong></div>
+    <div>to the VPCI School Services website!</div>
 </div>
-<h2>Map</h2>
+<div>Here, you will find all the relevant information about the clubs and events at our school. This is still a
+    work-in-progress, so we'd love to hear feedback and new ideas. If you want to help maintain the website, join the
+    Discord server and ask any of our executives. More information can be found <a href="https://google.com">here</a>.
+</div>
+<h2>Clubs</h2>
+<div>There are tons of clubs at VP, here are a few:</div>
+<router-link to="/clubs">See more</router-link>
+<h2>Newest Posts</h2>
+<div>These are what the clubs are saying.</div>
+<router-link to="/clubs">See more</router-link>
 <!-- <MiniMap></MiniMap> -->
 <h2>Calendar</h2>
-<Calendar :events="events" />
+<Calendar :events="events"/>
