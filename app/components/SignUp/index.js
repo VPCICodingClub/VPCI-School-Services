@@ -23,9 +23,13 @@ export default {
                     password: this.password,
                     code: this.code,
                 });
-                updateToken(token);
-                alert(data);
-                this.$router.push({ name: 'dashboard' });
+                if (token) {
+                    updateToken(token);
+                    this.$router.push({ name: 'dashboard' });
+                } else {
+                    alert('Could not create your account');
+                    this.$router.push({ name: 'signIn' });
+                }
             } else {
                 alert('Passwords do not match!');
             }
