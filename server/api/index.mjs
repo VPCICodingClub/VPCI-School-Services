@@ -25,6 +25,10 @@ import addPost from './addPost.mjs';
 import updatePost from './updatePost.mjs';
 import deletePost from './deletePost.mjs';
 
+import getCodes from './getCodes.mjs';
+import generateCode from './generateCode.mjs';
+import deleteCode from './deleteCode.mjs';
+
 // import upsert from './upsert.mjs'
 // import del from './delete.mjs';
 
@@ -57,6 +61,10 @@ router.get(apiPath + '/posts', getPosts);
 router.post(apiPath + '/posts', authorize, addPost);
 router.put(apiPath + '/posts/:postId', authorize, updatePost);
 router.delete(apiPath + '/posts/:postId', authorize, deletePost);
+
+router.get(apiPath + '/codes', authorize, getCodes);
+router.get(apiPath + '/new-code', authorize, generateCode);
+router.delete(apiPath + '/codes/:codeId', authorize, deleteCode);
 
 // router.put(apiPath + '/resource/:model', authorize, upsert);
 // router.delete(apiPath + '/resource/:model/:id', authorize, del);

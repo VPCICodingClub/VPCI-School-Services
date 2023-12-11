@@ -1,14 +1,7 @@
 <section>
     <h2>Welcome {{account.username}}</h2>
+    <ExecPanel v-if="account.type === 'normal'" :account="account" />
+    <AdminPanel v-if="account.type === 'admin'" />
     <br>
-    <h3>My Clubs</h3>
-    <div v-for="(club, index) in account.Clubs" style="border: solid black 1px;">
-        <router-link :to="{ name: 'editClub', params: { slug: club.slug }}">
-            <h4>{{club.name}}</h4>
-        </router-link>
-    </div>
-    <router-link :to="{ name: 'createClub' }">Create New Club</router-link>
     <button @click="logout">Logout</button>
-    <br>
-    {{account}}
 </section>

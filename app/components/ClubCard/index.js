@@ -1,5 +1,5 @@
 import template from './clubCard.html';
-import './clubCard.css'
+//import './clubCard.css'
 
 export default {
     template,

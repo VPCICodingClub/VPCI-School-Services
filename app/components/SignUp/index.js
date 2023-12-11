@@ -12,6 +12,7 @@ export default {
             passwordConfirmation: null,
             email: null, // TODO: regex to verify.
             isClubAccount: false,
+            code: null,
         };
     },
     methods: {
@@ -20,8 +21,7 @@ export default {
                 const { data: { token } } = await internalApi.post('register', {
                     username: this.username,
                     password: this.password,
-                    email: this.email,
-                    // isClubAccount: this.isClubAccount,
+                    code: this.code,
                 });
                 updateToken(token);
                 this.$router.push({ name: 'dashboard' });

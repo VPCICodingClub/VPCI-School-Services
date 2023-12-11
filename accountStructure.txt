@@ -1,0 +1,12 @@
+admin
+ -> create codes
+ -> codes last for a short time
+ -> these codes will live in memory since there are so few at once
+ -> manage all accounts
+ -> cannot create clubs 
+
+normal
+ -> require a code
+ -> have multiple clubs
+
+ Then each account will have its own panel

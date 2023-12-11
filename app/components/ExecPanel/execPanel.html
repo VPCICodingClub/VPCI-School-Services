@@ -1,0 +1,7 @@
+<h3>My Clubs</h3>
+<div v-for="(club, index) in account.Clubs" style="border: solid black 1px;">
+    <router-link :to="{ name: 'editClub', params: { slug: club.slug }}">
+        <h4>{{club.name}}</h4>
+    </router-link>
+</div>
+<router-link :to="{ name: 'createClub' }">Create New Club</router-link>

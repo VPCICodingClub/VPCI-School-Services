@@ -1,4 +1,7 @@
 'use strict';
+
+const accountTypes = require('../../config/accountTypes.json');
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
@@ -22,15 +25,15 @@ module.exports = {
         allowNull: false,
         type: Sequelize.TEXT
       },
-      email: {
+      //email: {
+      //  allowNull: false,
+      //  type: Sequelize.TEXT
+      //},
+      type: {
         allowNull: false,
-        type: Sequelize.TEXT
+        type: Sequelize.ENUM(accountTypes),
+        default: 'member',
       },
-      // type: {
-      //   allowNull: false,
-      //   type: Sequelize.TEXT,
-      //   default: 'member',
-      // },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

@@ -1,4 +1,7 @@
 'use strict';
+
+const accountTypes = require('../../config/accountTypes.json');
+
 const {
   Model
 } = require('sequelize');
@@ -21,8 +24,8 @@ module.exports = (sequelize, DataTypes) => {
     username: { type: DataTypes.TEXT, allowNull: false, unique: true },
     passwordHash: { type: DataTypes.TEXT, allowNull: false },
     salt: { type: DataTypes.TEXT, allowNull: false },
-    email: { type: DataTypes.TEXT, allowNull: false },
-    // type: { type: DataTypes.TEXT, allowNull: false },
+    // email: { type: DataTypes.TEXT, allowNull: false },
+    type: { type: DataTypes.ENUM(accountTypes), allowNull: false },
   }, {
     sequelize,
     modelName: 'Accounts',

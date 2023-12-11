@@ -6,7 +6,7 @@ import hashPassword from '../../lib/hashPassword.mjs';
 const { Accounts } = db;
 
 export default async (req, res) => {
-  const { username, password } = req.body;
+  const { username, password, code } = req.body;
 
   if (!username || !password) {
     return res.status(400).json({
@@ -38,6 +38,7 @@ export default async (req, res) => {
       const token = jwt.sign({
         id: user.id,
         username,
+        type: user.type,
         // clubs: clubIds,
       }, secrets.jwtSecret, { expiresIn: maxAge, });
 

@@ -1,13 +1,13 @@
 import template from './home.html';
 import internalApi from 'Lib/internalApi';
 import Calendar from '../Calendar';
-import MiniMap from '../MiniMap';
+//import MiniMap from '../MiniMap';
 import './home.css'
 
 export default {
     template,
     components: {
-        MiniMap,
+  //      MiniMap,
         Calendar,
     },
     data() {

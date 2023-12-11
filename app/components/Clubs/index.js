@@ -1,5 +1,5 @@
 import template from './clubs.html';
-import ClubCard from './ClubCard';
+import ClubCard from '../ClubCard';
 import internalApi from 'Lib/internalApi';
 import './clubs.css';
 
