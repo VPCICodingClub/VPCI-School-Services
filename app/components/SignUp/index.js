@@ -24,6 +24,7 @@ export default {
                     code: this.code,
                 });
                 updateToken(token);
+                alert(data);
                 this.$router.push({ name: 'dashboard' });
             } else {
                 alert('Passwords do not match!');

@@ -8,6 +8,9 @@
     Discord server and ask any of our executives. More information can be found <a href="https://google.com">here</a>.
 </div>
 <h2>Clubs</h2>
+<div>
+    <ClubCard v-for="club in clubs" :club="club" />
+</div>
 <div>There are tons of clubs at VP, here are a few:</div>
 <router-link to="/clubs">See more</router-link>
 <h2>Newest Posts</h2>
